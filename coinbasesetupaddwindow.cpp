@@ -5,8 +5,8 @@
 coinbaseSetupAddWindow::coinbaseSetupAddWindow(QWidget *parent) :  QDialog(parent), ui(new Ui::coinbaseSetupAddWindow),mDb(NULL) {
     ui->setupUi(this);
     mParent = reinterpret_cast<coinbaseAccountSetupWindow*>(parent);
-    setWindowFlag(Qt::WindowCloseButtonHint,false);
-    setWindowFlag(Qt::WindowContextHelpButtonHint ,false);
+//    setWindowFlag(Qt::WindowCloseButtonHint,false);
+//    setWindowFlag(Qt::WindowContextHelpButtonHint ,false);
     mParent->hide();
     connect(ui->mCancelButton,SIGNAL(clicked(bool)),this,SLOT(doneClicked()));
     connect(ui->mSaveButton,SIGNAL(clicked(bool)),this,SLOT(saveClicked()));

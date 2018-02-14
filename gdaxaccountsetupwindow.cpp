@@ -4,8 +4,8 @@
 gdaxAccountSetupWindow::gdaxAccountSetupWindow(bpWindow *parent) : QDialog(parent), ui(new Ui::gdaxAccountSetupWindow), mAddAccountWin(NULL) {
     ui->setupUi(this);
     mParent = parent;
-    setWindowFlag(Qt::WindowCloseButtonHint,false);
-    setWindowFlag(Qt::WindowContextHelpButtonHint,false);
+//    setWindowFlag(Qt::WindowCloseButtonHint,false);
+//    setWindowFlag(Qt::WindowContextHelpButtonHint,false);
     mParent->hide();
     loadAccountList();
     //Bind Buttons

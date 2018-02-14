@@ -5,8 +5,8 @@ coinbaseAccountSetupWindow::coinbaseAccountSetupWindow(QWidget *parent) :
     QDialog(parent),  ui(new Ui::coinbaseAccountSetupWindow), mAddAccountWin(NULL) {
     ui->setupUi(this);    
     mParent = reinterpret_cast<bpWindow*>(parent);
-    setWindowFlag(Qt::WindowCloseButtonHint,false);
-    setWindowFlag(Qt::WindowContextHelpButtonHint,false);
+//    setWindowFlag(Qt::WindowCloseButtonHint,false);
+//    setWindowFlag(Qt::WindowContextHelpButtonHint,false);
     mParent->hide();
     loadAccountList();
     //Bind Buttons

@@ -4,8 +4,8 @@
 gdaxSetupAddWindow::gdaxSetupAddWindow(gdaxAccountSetupWindow *parent) :  QDialog(parent), ui(new Ui::gdaxSetupAddWindow), mDb(NULL) {
     ui->setupUi(this);
     mParent = parent;
-    setWindowFlag(Qt::WindowCloseButtonHint,false);
-    setWindowFlag(Qt::WindowContextHelpButtonHint ,false);
+//    setWindowFlag(Qt::WindowCloseButtonHint,false);
+//    setWindowFlag(Qt::WindowContextHelpButtonHint ,false);
     mParent->hide();
     connect(ui->mCancelButton,SIGNAL(clicked(bool)),this,SLOT(doneClicked()));
     connect(ui->mSaveButton,SIGNAL(clicked(bool)),this,SLOT(saveClicked()));
