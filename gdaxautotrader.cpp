@@ -3,11 +3,11 @@
 gdaxAutoTrader::gdaxAutoTrader(bitProphet *parent) : QObject(parent) {
     mParent = parent;
     //Sell Types
-    mTradeTypes.append("BTC");
+//    mTradeTypes.append("BTC");
     mTradeTypes.append("LTC");
 
     //Buy (with USD) Types
-    mBuyTypes.append("BTC");
+//    mBuyTypes.append("BTC");
     mBuyTypes.append("LTC");
 
 
@@ -18,7 +18,8 @@ gdaxAutoTrader::gdaxAutoTrader(bitProphet *parent) : QObject(parent) {
     mLTCLog->document()->setMaximumBlockCount(256);
     mETHLog->document()->setMaximumBlockCount(256);
     mUSDStartAmount = "0.00";
-    mMinUSDBuyAmount = 5.00;
+    mMinCryptoBuyAmount = mParent->mParent->getAutoGdaxMinCryptoBuy()->text().toDouble();
+    mMinUSDBuyAmount = mParent->mParent->getAutoGdaxMinUSDBuy()->text().toDouble();
     mMinPercentProfit = 0.004; //in DECIMAL
     mLastBuyPriceBTC = "0.00";mLastBuyPriceLTC = "0.00";mLastBuyPriceETH = "0.00";
     mLastSellPriceBTC = "0.00";mLastSellPriceLTC = "0.00";mLastSellPriceETH = "0.00";
@@ -64,6 +65,8 @@ void gdaxAutoTrader::sayGdaxAutoTrader(QString sayThis, QString whichBox) {
 ////////
 
 void gdaxAutoTrader::checkForBuyFills() {
+
+
     // status = 'placed' -> Ignore these, not yet verified by response from server, may not really exist
     // status = 'placed2' -> These are VERIFIED and DO EXIST and MAY OR MAY NOT be partially or completely filled(bought)
     // status = 'posted' -> This is in the process of placing an automatic SELL for this order, not yet verified by response from server, may not really exist
@@ -116,6 +119,10 @@ void gdaxAutoTrader::checkForSellFills() {
 
 void gdaxAutoTrader::autoTradeCheck() {
     if ( mParent->mAutoGDAXTrade == false ) { return; }
+    // Refresh UI extracted values
+    mMinCryptoBuyAmount = mParent->mParent->getAutoGdaxMinCryptoBuy()->text().toDouble();
+    mMinUSDBuyAmount = mParent->mParent->getAutoGdaxMinUSDBuy()->text().toDouble();
+
     //min LTC Buy is 0.01 LTC
     //min BTC Buy is 0.01 BTC
     //min ETH Buy is 0.01 ETH
@@ -175,29 +182,32 @@ void gdaxAutoTrader::autoTradeCheck() {
         sayGdaxAutoTrader("# Price: $" + curPrice,currCoin );
         sayGdaxAutoTrader("# Ask: $" + curAsk,currCoin );
         sayGdaxAutoTrader("# Bid: $" + curBid,currCoin );
+        sayGdaxAutoTrader("# minUSDBuy: $" + QString().setNum(mMinUSDBuyAmount),currCoin );
+        sayGdaxAutoTrader("# minCryptoBuy: " + QString().setNum(mMinCryptoBuyAmount),currCoin );
+        sayGdaxAutoTrader("# Available: " + USDBalance,currCoin);
         if ( USDBalance.toDouble() < mMinUSDBuyAmount  ) {
             sayGdaxAutoTrader("# Available $USD too low (< $"+QString().setNum(mMinUSDBuyAmount)+")",currCoin);
             continue;
         }
         QString howMuchToSpend("0.00");
-        if ( USDBalance.toDouble() * 0.10 > mMinUSDBuyAmount && ((USDBalance.toDouble() * 0.10) / curBid.toDouble()) > 0.01 ) {
+        if ( USDBalance.toDouble() * 0.10 > mMinUSDBuyAmount && ((USDBalance.toDouble() * 0.10) / curBid.toDouble()) > mMinCryptoBuyAmount ) {
             howMuchToSpend = QString().setNum(USDBalance.toDouble() * 0.10);
-        } else if ( USDBalance.toDouble() * 0.20 > mMinUSDBuyAmount && ((USDBalance.toDouble() * 0.20) / curBid.toDouble()) > 0.01 ) {
+        } else if ( USDBalance.toDouble() * 0.20 > mMinUSDBuyAmount && ((USDBalance.toDouble() * 0.20) / curBid.toDouble()) > mMinCryptoBuyAmount ) {
             howMuchToSpend = QString().setNum(USDBalance.toDouble() * 0.20);
-        } else if ( USDBalance.toDouble() * 0.30 > mMinUSDBuyAmount && ((USDBalance.toDouble() * 0.30) / curBid.toDouble()) > 0.01 ) {
+        } else if ( USDBalance.toDouble() * 0.30 > mMinUSDBuyAmount && ((USDBalance.toDouble() * 0.30) / curBid.toDouble()) > mMinCryptoBuyAmount ) {
             howMuchToSpend = QString().setNum(USDBalance.toDouble() * 0.30);
-        } else if ( USDBalance.toDouble() * 0.40 > mMinUSDBuyAmount && ((USDBalance.toDouble() * 0.40) / curBid.toDouble()) > 0.01 ) {
+        } else if ( USDBalance.toDouble() * 0.40 > mMinUSDBuyAmount && ((USDBalance.toDouble() * 0.40) / curBid.toDouble()) > mMinCryptoBuyAmount ) {
             howMuchToSpend = QString().setNum(USDBalance.toDouble() * 0.40);
-        } else if ( USDBalance.toDouble() * 0.50 > mMinUSDBuyAmount && ((USDBalance.toDouble() * 0.50) / curBid.toDouble()) > 0.01 ) {
+        } else if ( USDBalance.toDouble() * 0.50 > mMinUSDBuyAmount && ((USDBalance.toDouble() * 0.50) / curBid.toDouble()) > mMinCryptoBuyAmount ) {
             howMuchToSpend = QString().setNum(USDBalance.toDouble() * 0.50);
-        } else if ( USDBalance.toDouble() * 0.75 > mMinUSDBuyAmount && ((USDBalance.toDouble() * 0.75) / curBid.toDouble()) > 0.01 ) {
+        } else if ( USDBalance.toDouble() * 0.75 > mMinUSDBuyAmount && ((USDBalance.toDouble() * 0.75) / curBid.toDouble()) > mMinCryptoBuyAmount ) {
             howMuchToSpend = QString().setNum(USDBalance.toDouble() * 0.75);        
-        } else if ( USDBalance.toDouble() * 0.90 > mMinUSDBuyAmount && ((USDBalance.toDouble() * 0.90) / curBid.toDouble()) > 0.01 ) {
+        } else if ( USDBalance.toDouble() * 0.90 > mMinUSDBuyAmount && ((USDBalance.toDouble() * 0.90) / curBid.toDouble()) > mMinCryptoBuyAmount ) {
             howMuchToSpend = QString().setNum(USDBalance.toDouble() * 0.90);
-        } else if ( USDBalance.toDouble() > mMinUSDBuyAmount ) {
+        } else if ( USDBalance.toDouble() > mMinUSDBuyAmount && ((USDBalance.toDouble()) / curBid.toDouble()) > mMinCryptoBuyAmount ) {
             howMuchToSpend = QString().setNum(USDBalance.toDouble());
         } else {
-            sayGdaxAutoTrader("# Available $USD too low (< $"+QString().setNum(mMinUSDBuyAmount)+")",currCoin);
+            sayGdaxAutoTrader("# Available $USD too low For MinCryptoBuy(< "+QString().setNum(mMinCryptoBuyAmount)+")",currCoin);
             break;
         }
         //shave off more than .00
@@ -316,7 +326,7 @@ void gdaxAutoTrader::autoTradeCheck() {
         if ( belowHighest && belowHighBuffer && aboveLowest && aboveLowBuffer && belowLastBuyThisCoin && belowLastSellThisCoin ) {
                     //Determine Sell Price (from minProfitPercent)
                     double totalBuyAmount = howMuchToSpend.toDouble() / curBid.toDouble();
-                    if ( totalBuyAmount < 0.01 ) { sayGdaxAutoTrader("# Cannot Afford 0.01 of "+ currCoin,currCoin); continue; }
+                    if ( totalBuyAmount < mMinCryptoBuyAmount ) { sayGdaxAutoTrader("# Cannot Afford "+ QString().setNum(mMinCryptoBuyAmount) +" of "+ currCoin,currCoin); continue; }
                     double totalBuyCost = howMuchToSpend.toDouble();
                     double profNeeded = mMinPercentProfit * totalBuyCost;
                     double sellTotal = totalBuyCost + profNeeded;

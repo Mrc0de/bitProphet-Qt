@@ -339,6 +339,14 @@ QLineEdit* bpWindow::getPlaceLimitSellPrice() {
     return ui->mPlaceLimitSellPrice;
 }
 
+QLineEdit* bpWindow::getAutoGdaxMinCryptoBuy() {
+    return ui->mAutoGdaxMinCryptoBuy;
+}
+//getAutoGdaxMinUSDBuy()
+QLineEdit* bpWindow::getAutoGdaxMinUSDBuy() {
+    return ui->mAutoGdaxMinUSDBuy;
+}
+
 QPushButton* bpWindow::getDepositFromPayMethodButton() {
     return ui->mDepositFromPaymentMethodButton;
 }

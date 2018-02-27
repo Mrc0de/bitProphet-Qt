@@ -35,6 +35,7 @@ public:
     QString mLastSellTimeBTC;
     QString mLastSellTimeLTC;
     QString mLastSellTimeETH;
+    double mMinCryptoBuyAmount;
     double mLastSellExpireAfter;
     double mLastBuyExpireAfter;
 private:

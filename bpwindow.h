@@ -60,6 +60,8 @@ public:
     QLineEdit *getWithdrawToPayMethodAmount();
     QLineEdit *getXferFromCoinbaseAmount();
     QLineEdit *getXferToCoinbaseAmount();
+    QLineEdit* getAutoGdaxMinCryptoBuy();
+    QLineEdit* getAutoGdaxMinUSDBuy();
     /////////////////////////////////////
     void killAccSetupWindow();
     void killGdaxAccSetupWindow();
