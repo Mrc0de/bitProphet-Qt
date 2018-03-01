@@ -20,7 +20,9 @@ gdaxAutoTrader::gdaxAutoTrader(bitProphet *parent) : QObject(parent) {
     mUSDStartAmount = "0.00";
     mMinCryptoBuyAmount = mParent->mParent->getAutoGdaxMinCryptoBuy()->text().toDouble();
     mMinUSDBuyAmount = mParent->mParent->getAutoGdaxMinUSDBuy()->text().toDouble();
-    mMinPercentProfit = 0.004; //in DECIMAL
+    mMinPercentProfit = mParent->mParent->getAutoGdaxMinPercentProfit()->text().toDouble();
+        //Fetched from UI in PERCENT, change to DECIMAL ( Divided by 100 )
+    mMinPercentProfit = mMinPercentProfit / 100;
     mLastBuyPriceBTC = "0.00";mLastBuyPriceLTC = "0.00";mLastBuyPriceETH = "0.00";
     mLastSellPriceBTC = "0.00";mLastSellPriceLTC = "0.00";mLastSellPriceETH = "0.00";
     mLastBuyTimeBTC = "0";mLastBuyTimeLTC = "0";mLastBuyTimeETH = "0";
@@ -122,6 +124,8 @@ void gdaxAutoTrader::autoTradeCheck() {
     // Refresh UI extracted values
     mMinCryptoBuyAmount = mParent->mParent->getAutoGdaxMinCryptoBuy()->text().toDouble();
     mMinUSDBuyAmount = mParent->mParent->getAutoGdaxMinUSDBuy()->text().toDouble();
+    mMinPercentProfit = mParent->mParent->getAutoGdaxMinPercentProfit()->text().toDouble();
+    mMinPercentProfit = mMinPercentProfit / 100;    //Fetched from UI in PERCENT, change to DECIMAL ( Divided by 100 )
 
     //min LTC Buy is 0.01 LTC
     //min BTC Buy is 0.01 BTC
