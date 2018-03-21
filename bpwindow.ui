@@ -44,7 +44,7 @@
        <rect>
         <x>0</x>
         <y>10</y>
-        <width>1151</width>
+        <width>571</width>
         <height>261</height>
        </rect>
       </property>
@@ -60,8 +60,8 @@
        <rect>
         <x>0</x>
         <y>280</y>
-        <width>1151</width>
-        <height>501</height>
+        <width>1161</width>
+        <height>511</height>
        </rect>
       </property>
       <property name="currentIndex">
@@ -71,22 +71,157 @@
        <attribute name="title">
         <string>BTC-USD</string>
        </attribute>
+       <widget class="QLabel" name="mBtcUsdPriceLabelText">
+        <property name="geometry">
+         <rect>
+          <x>6</x>
+          <y>0</y>
+          <width>31</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Price $</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="mBtcUsdPriceLabel">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>0</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>0</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="mLtcUsdTab">
        <attribute name="title">
         <string>LTC-USD</string>
        </attribute>
+       <widget class="QLabel" name="mLtcUsdPriceLabelText">
+        <property name="geometry">
+         <rect>
+          <x>6</x>
+          <y>0</y>
+          <width>31</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Price $</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="mLtcUsdPriceLabel">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>0</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>0</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="mEthUsdTab">
        <attribute name="title">
         <string>ETH-USD</string>
        </attribute>
+       <widget class="QLabel" name="mEthUsdPriceLabelText">
+        <property name="geometry">
+         <rect>
+          <x>6</x>
+          <y>0</y>
+          <width>31</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Price $</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="mEthUsdPriceLabel">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>0</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>0</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="mBtcUsdTab">
        <attribute name="title">
         <string>BCH-USD</string>
        </attribute>
+       <widget class="QLabel" name="mBchUsdPriceLabelText">
+        <property name="geometry">
+         <rect>
+          <x>6</x>
+          <y>0</y>
+          <width>31</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Price $</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="mBchUsdPriceLabel">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>0</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>0</string>
+        </property>
+       </widget>
       </widget>
+     </widget>
+     <widget class="QTextEdit" name="mWebSocketLiveOutput">
+      <property name="geometry">
+       <rect>
+        <x>580</x>
+        <y>10</y>
+        <width>571</width>
+        <height>261</height>
+       </rect>
+      </property>
+      <property name="cursor" stdset="0">
+       <cursorShape>WaitCursor</cursorShape>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::StrongFocus</enum>
+      </property>
+      <property name="acceptDrops">
+       <bool>false</bool>
+      </property>
+      <property name="toolTip">
+       <string>WebSocket Live Data</string>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+      <property name="acceptRichText">
+       <bool>false</bool>
+      </property>
+      <property name="placeholderText">
+       <string>Websocket Live Data</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="mCoinbaseTab">
@@ -1607,7 +1742,7 @@
       <x>1180</x>
       <y>79</y>
       <width>141</width>
-      <height>391</height>
+      <height>521</height>
      </rect>
     </property>
     <property name="toolTip">
@@ -1626,7 +1761,7 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>290</y>
+       <y>410</y>
        <width>141</width>
        <height>91</height>
       </rect>
@@ -1968,32 +2103,136 @@
        <x>0</x>
        <y>240</y>
        <width>141</width>
-       <height>51</height>
+       <height>171</height>
       </rect>
      </property>
      <property name="title">
       <string>WebSocket State</string>
      </property>
      <property name="flat">
-      <bool>true</bool>
+      <bool>false</bool>
      </property>
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="mWebSocketStateLabel">
       <property name="geometry">
        <rect>
-        <x>0</x>
+        <x>10</x>
         <y>20</y>
-        <width>111</width>
+        <width>121</width>
         <height>21</height>
        </rect>
       </property>
       <property name="layoutDirection">
        <enum>Qt::LeftToRight</enum>
       </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
       <property name="text">
        <string>NULL</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="mWebSocketSubBtcUsdCheckBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>90</y>
+        <width>70</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>BTC-USD</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="mWebSocketSubEthUsdCheckBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>130</y>
+        <width>70</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ETH-USD</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="mWebSocketSubLtcUsdCheckBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>110</y>
+        <width>70</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>LTC-USD</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="mWebSocketSubBchUsdCheckBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>150</y>
+        <width>70</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>BCH-USD</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="mWSSubsLabelText">
+      <property name="geometry">
+       <rect>
+        <x>6</x>
+        <y>61</y>
+        <width>131</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Sunken</enum>
+      </property>
+      <property name="lineWidth">
+       <number>1</number>
+      </property>
+      <property name="midLineWidth">
+       <number>0</number>
+      </property>
+      <property name="text">
+       <string>WS Subscriptions</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <property name="indent">
+       <number>-1</number>
       </property>
      </widget>
     </widget>
