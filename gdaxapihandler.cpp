@@ -17,13 +17,13 @@ gdaxApiHandler::gdaxApiHandler(bitProphet *parent) : QObject(parent), mAccount(N
                 mParent->getDb()->createGdaxPriceHistoryTable();
                 say("Created gdaxPriceHistory Table.");
             } else {
-                say("Found gdaxPriceHistory Table.");
+                //say("Found gdaxPriceHistory Table.");
             }
             if ( !mParent->getDb()->hasTable("gdaxAutoTraderHistory") ) {
                 mParent->getDb()->createGdaxTraderHistoryTable();
                 say("Created gdaxTraderHistory Table.");
             } else {
-                say("Found gdaxTraderHistory Table.");
+                //say("Found gdaxTraderHistory Table.");
             }
 
             mAccount = new gdaxAccount(this);
@@ -64,7 +64,7 @@ gdaxApiHandler::~gdaxApiHandler() {
 // Methods
 ///////////
 void gdaxApiHandler::say(QString sayThis) {
-    mParent->say( "["+mPtrName+"] " + sayThis);
+    mParent->say( "[gdaxApiHandler] " + sayThis);
 }
 
 void gdaxApiHandler::listGdaxAccounts() {

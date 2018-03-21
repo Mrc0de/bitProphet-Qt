@@ -7,6 +7,7 @@ bitProphet::bitProphet(QObject *parent) : QObject(parent),  mAutoRefreshAccount(
     mAutoCheckGDAXPricesInterval(20000),  mAutoGDAXTrade(false), mAutoGDAXTradeInterval(60000) {
     //fix stupid order warning....
         mParent = reinterpret_cast<bpWindow*>(parent);
+        mParent->getStatusOutput()->document()->setMaximumBlockCount(200);
         mPtrName = QString("0x%1").arg((quintptr)this, QT_POINTER_SIZE * 2, 16, QChar('0'));
         // Startup
         say("(\\.....\\..........,/)");
@@ -20,9 +21,9 @@ bitProphet::bitProphet(QObject *parent) : QObject(parent),  mAutoRefreshAccount(
         mDb = new bpDatabase(this);
         if ( mDb->fileExists() ) { // Check for database file (Sqllite)
             // If File does exist, load available data
-            say("Found Database...");
+            //say("Found Database...");
             if ( mDb->hasAccountsTable() ) {
-                say("Found Accounts Table.");
+                //say("Found Accounts Table.");
                 // Check for accounts
             } else {
                 say("Accounts Table Not Found.");
@@ -47,7 +48,7 @@ bitProphet::bitProphet(QObject *parent) : QObject(parent),  mAutoRefreshAccount(
                 say("gdaxAccounts Table Initialized!");
             } else { say("Error, Check debug log!"); }
         } else {
-            say("Found gdaxAccounts Table.");
+            //say("Found gdaxAccounts Table.");
         }        
 
         // Create cbApiHandler AFTER all db init (or shit will get CRAAAZEEE)
@@ -56,9 +57,8 @@ bitProphet::bitProphet(QObject *parent) : QObject(parent),  mAutoRefreshAccount(
         mGDAXApiHandler = new gdaxApiHandler(this);
         // Finish startup process
         setProphetState("IDLE");
-        // Start bitProphet based on saved settings (or defaults)
-        //Prevent QTextEdits from exhausting memory with logged output ( from say() )
-        mParent->getStatusOutput()->document()->setMaximumBlockCount(200);
+        // Start bitProphet based on saved settings (or defaults)        
+
 }
 
 bitProphet::~bitProphet() {
@@ -94,6 +94,7 @@ void bitProphet::say(QString sayThis, bool debug) {
         mParent->getStatusOutput()->append(sayThis);
     }
     std::cout<<QString(sayThis).toLocal8Bit().toStdString()<<std::endl;
+    mParent->getStatusOutput()->verticalScrollBar()->setValue(mParent->getStatusOutput()->verticalScrollBar()->maximum());
 }
 
 void bitProphet::addAccountToCoinbaseComboBox(QString accountName) {

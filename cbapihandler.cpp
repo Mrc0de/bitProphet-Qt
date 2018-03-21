@@ -3,7 +3,7 @@
 cbApiHandler::cbApiHandler(QObject *parent) : QObject(parent),mAccount(NULL), mWalletTableWidget(NULL),mTransactionTable(NULL) {
     mParentProphet = reinterpret_cast<bitProphet*>(parent);
     mPtrName = QString("0x%1").arg((quintptr)this, QT_POINTER_SIZE * 2, 16, QChar('0'));
-    say("Api Handler Created...");
+    say("Api Handler Created at " + mPtrName);
     mParentProphet->mParent->getCoinbaseTabLog()->document()->setMaximumBlockCount(256);
     if ( mParentProphet->getDb()->getAccountList().length() > 0 ) {
         QString defCbId = mParentProphet->getDb()->getDefaultAccountId();
@@ -60,7 +60,7 @@ cbApiHandler::~cbApiHandler() {
 ///////////
 
 void cbApiHandler::say(QString sayThis) {
-    mParentProphet->say( "[" + mPtrName + "] " + sayThis);
+    mParentProphet->say( "[cbApiHandler] " + sayThis);
 }
 
 QString cbApiHandler::getCoinbaseApiSecret() {

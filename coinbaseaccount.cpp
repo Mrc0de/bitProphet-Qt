@@ -3,7 +3,7 @@
 coinbaseAccount::coinbaseAccount(cbApiHandler *parent) {
     mParent = parent;
     mPtrName = QString("0x%1").arg((quintptr)this, QT_POINTER_SIZE * 2, 16, QChar('0'));
-    say("coinbaseAccount Created...");
+    say("coinbaseAccount Instance at " + mPtrName);
     mWalletList.clear();
     mPayMethods.clear();
 }
@@ -16,7 +16,7 @@ coinbaseAccount::~coinbaseAccount() {
 // Methods
 ////////////
 void coinbaseAccount::say(QString sayThis) {
-    mParent->say( "[" +mPtrName+ "] " + sayThis);
+    mParent->say( "[coinbaseAccount] " + sayThis);
 }
 
 
