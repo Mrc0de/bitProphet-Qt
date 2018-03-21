@@ -40,6 +40,7 @@ gdaxApiHandler::gdaxApiHandler(bitProphet *parent) : QObject(parent), mAccount(N
             //fetch our coinbase accounts and load them into combo boxes for transfers
             listCoinbaseAccountsAvailableToGdax();
             //do 1 price check
+            //If we use websocket... we dont use this
             for(int c=0;c<mProductIds.count();c++){
                 fetchGdaxPrice(mProductIds.at(c));
             }
