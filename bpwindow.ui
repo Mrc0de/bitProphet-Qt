@@ -30,7 +30,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="mStatusTab">
      <attribute name="title">
@@ -55,6 +55,39 @@
        <bool>false</bool>
       </property>
      </widget>
+     <widget class="QTabWidget" name="tabWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>280</y>
+        <width>1061</width>
+        <height>501</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="mBtcUsdTab">
+       <attribute name="title">
+        <string>BTC-USD</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="mLtcUsdTab">
+       <attribute name="title">
+        <string>LTC-USD</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="mEthUsdTab">
+       <attribute name="title">
+        <string>ETH-USD</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="mBtcUsdTab">
+       <attribute name="title">
+        <string>BCH-USD</string>
+       </attribute>
+      </widget>
+     </widget>
     </widget>
     <widget class="QWidget" name="mCoinbaseTab">
      <attribute name="title">
@@ -68,7 +101,7 @@
        <rect>
         <x>10</x>
         <y>40</y>
-        <width>1041</width>
+        <width>641</width>
         <height>192</height>
        </rect>
       </property>
