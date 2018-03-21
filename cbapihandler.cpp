@@ -109,25 +109,7 @@ void cbApiHandler::processResponse( cbApiResponse *resp ) {
         }
     } else if (type == "listPaymentMethods" ) {
           listPayMethodProcessResponse(resp);
-    } else if (type == "btcSpotPrice" ) {
-          mParentProphet->setBtcSpotPrice(resp);
-    } else if (type == "ethSpotPrice" ) {
-          mParentProphet->setEthSpotPrice(resp);
-    } else if (type == "ltcSpotPrice" ) {
-          mParentProphet->setLtcSpotPrice(resp);
-    } else if (type == "btcSpotBuyPrice" ) {
-        mParentProphet->setBtcSpotBuyPrice(resp);
-    } else if (type == "ethSpotBuyPrice" ) {
-        mParentProphet->setEthSpotBuyPrice(resp);
-    } else if (type == "ltcSpotBuyPrice" ) {
-        mParentProphet->setLtcSpotBuyPrice(resp);
-    } else if (type == "btcSpotSellPrice" ) {
-        mParentProphet->setBtcSpotSellPrice(resp);
-    } else if (type == "ethSpotSellPrice" ) {
-        mParentProphet->setEthSpotSellPrice(resp);
-    } else if (type == "ltcSpotSellPrice" ) {
-        mParentProphet->setLtcSpotSellPrice(resp);
-    } else if (type == "buySpotQuote" ) {
+    }  else if (type == "buySpotQuote" ) {
           processBuySpotQuoteResponse(resp);
     } else if (type == "sellSpotQuote" ) {
           processSellSpotQuoteResponse(resp);
@@ -497,10 +479,10 @@ void cbApiHandler::listPayMethodProcessResponse( cbApiResponse *resp ) {
     QPushButton *refreshTransactions = mParentProphet->mParent->getRefreshTransactionsButton();
     connect(depFromButton, SIGNAL(clicked(bool)),this,SLOT(depositFromButtonSlot()));
     connect(withToButton, SIGNAL(clicked(bool)),this,SLOT(withdrawToButtonSlot()));
-    connect(QuoteBuySpotButton, SIGNAL(clicked(bool)),this,SLOT( QuoteBuySpotClicked()  ));
-    connect(QuoteSellSpotButton, SIGNAL(clicked(bool)),this,SLOT( QuoteSellSpotClicked() ));
-    connect(sellSpotButton, SIGNAL(clicked(bool)),this,SLOT( sellSpotClicked() ));
-    connect(buySpotButton, SIGNAL(clicked(bool)),this,SLOT( buySpotClicked() ));
+//    connect(QuoteBuySpotButton, SIGNAL(clicked(bool)),this,SLOT( QuoteBuySpotClicked()  ));
+//    connect(QuoteSellSpotButton, SIGNAL(clicked(bool)),this,SLOT( QuoteSellSpotClicked() ));
+//    connect(sellSpotButton, SIGNAL(clicked(bool)),this,SLOT( sellSpotClicked() ));
+//    connect(buySpotButton, SIGNAL(clicked(bool)),this,SLOT( buySpotClicked() ));
     connect(refreshTransactions, SIGNAL(clicked(bool)),this,SLOT( fetchTransactions() ) );
     depFromButton->setEnabled(1);
     withToButton->setEnabled(1);
@@ -580,73 +562,73 @@ void cbApiHandler::buyAutoSpot(QString total,QString coin) {
     cbTabLog("# AutoBuy Requested");
 }
 
-void cbApiHandler::buySpotClicked() {
-    cbTabLog("### BUY @ SPOT PRICE ### ");
-    QString buyAmount = mParentProphet->mParent->getBuySpotAmount()->text();
-    cbTabLog("# Buying " + buyAmount + " " + mParentProphet->mParent->getBuySpotTypeComboBox()->currentText() );
-    QString spot;
-    if ( mParentProphet->mParent->getBuySpotTypeComboBox()->currentText() == "BTC" ) {
-        spot = mParentProphet->mParent->getBtcSpotBuyPriceLabel()->text();
-    } else if ( mParentProphet->mParent->getBuySpotTypeComboBox()->currentText() == "LTC" ) {
-        spot = mParentProphet->mParent->getLtcSpotBuyPriceLabel()->text();
-    } else if ( mParentProphet->mParent->getBuySpotTypeComboBox()->currentText() == "ETH" ) {
-        spot = mParentProphet->mParent->getEthSpotBuyPriceLabel()->text();
-    }
-    cbTabLog("# Spot Price $" + spot);
-    QString subTotal = QString().setNum(mParentProphet->mParent->getBuySpotTotalLabel()->text().toDouble() - mParentProphet->mParent->getBuySpotFeeLabel()->text().toDouble());
-    subTotal = trimPriceStringDecimal(subTotal);
-    cbTabLog("# Sub-Total: $" + subTotal );
-    QString fee = mParentProphet->mParent->getBuySpotFeeLabel()->text();
-    fee = trimPriceStringDecimal(fee);
-    if ( fee.toDouble() < 0.99 ) {
-        fee = "0.99";
-    }
-    cbTabLog("# Actual Buy Fee: $" + fee );
-    QString totalBuyAmountAfterFee = QString().setNum(fee.toDouble() + subTotal.toDouble());
+//void cbApiHandler::buySpotClicked() {
+//    cbTabLog("### BUY @ SPOT PRICE ### ");
+//    QString buyAmount = mParentProphet->mParent->getBuySpotAmount()->text();
+//    cbTabLog("# Buying " + buyAmount + " " + mParentProphet->mParent->getBuySpotTypeComboBox()->currentText() );
+//    QString spot;
+//    if ( mParentProphet->mParent->getBuySpotTypeComboBox()->currentText() == "BTC" ) {
+//        spot = mParentProphet->mParent->getBtcSpotBuyPriceLabel()->text();
+//    } else if ( mParentProphet->mParent->getBuySpotTypeComboBox()->currentText() == "LTC" ) {
+//        spot = mParentProphet->mParent->getLtcSpotBuyPriceLabel()->text();
+//    } else if ( mParentProphet->mParent->getBuySpotTypeComboBox()->currentText() == "ETH" ) {
+//        spot = mParentProphet->mParent->getEthSpotBuyPriceLabel()->text();
+//    }
+//    cbTabLog("# Spot Price $" + spot);
+//    QString subTotal = QString().setNum(mParentProphet->mParent->getBuySpotTotalLabel()->text().toDouble() - mParentProphet->mParent->getBuySpotFeeLabel()->text().toDouble());
+//    subTotal = trimPriceStringDecimal(subTotal);
+//    cbTabLog("# Sub-Total: $" + subTotal );
+//    QString fee = mParentProphet->mParent->getBuySpotFeeLabel()->text();
+//    fee = trimPriceStringDecimal(fee);
+//    if ( fee.toDouble() < 0.99 ) {
+//        fee = "0.99";
+//    }
+//    cbTabLog("# Actual Buy Fee: $" + fee );
+//    QString totalBuyAmountAfterFee = QString().setNum(fee.toDouble() + subTotal.toDouble());
 
-    totalBuyAmountAfterFee = trimPriceStringDecimal(totalBuyAmountAfterFee);
-    cbTabLog("# Actual Buy Total: $" + totalBuyAmountAfterFee );
-    cbTabLog("# Placing Buy");
-    // Send Request
-    QComboBox *buySpotWith = mParentProphet->mParent->getBuySpotWithPaymentMethodComboBox();
-    QString selectedPayment = buySpotWith->currentData().toString();
-    if ( selectedPayment.length() > 0 ) {
-        QString currencyBought = mParentProphet->mParent->getBuySpotTypeComboBox()->currentText();
-        QString currencyPaidWith = mParentProphet->mParent->getBuySpotWithPaymentMethodComboBox()->currentText().mid(0,3);
-        QString accId = selectedPayment;
-        QString reqBody = "{ \"total\": \"" + totalBuyAmountAfterFee + "\", \"currency\": \"" + currencyPaidWith + "\", \"payment_method\": \"" + selectedPayment + "\" , \"commit\": true }";
-        //say("## rBody -> " + reqBody);
-        cbTabLog("# Sending TOTAL: " + totalBuyAmountAfterFee);
-        cbTabLog("# Sending Currency: " + currencyPaidWith);
-        cbTabLog("# Sending commit: TRUE");
-        //cbTabLog("# Sending pm: " + selectedPayment);
-        //Creating a new coinbaseApiRequest
-        cbApiRequest* req = new cbApiRequest(this);
-        req->setMethod("POST");
-        // We need the id of the account the buy will GO TO
-        // ie: BTC buy = BTC wallet
-        // find selected wallet and get id for URL
-        QString destAccount;
-        for ( int c=0;c<mAccount->getWalletCount();c++ ){
-            //say("Wallet Currency: " + mAccount->getWallet(c)->mCurrency );
-            if ( mAccount->getWallet(c)->mCurrency == currencyBought ) {
-                destAccount = mAccount->getWallet(c)->mId;
-            }
-        }
-        req->setPath("/v2/accounts/" + destAccount + "/buys");
-        req->setBody(reqBody);
-        req->setType("buySpot"); //just for us
-        req->sendRequest();
-        cbTabLog("# Buy Requested");
-    } else {
-        say("Payment Method Not Selected...");
-        say("Select a Payment Method!");
-    }
+//    totalBuyAmountAfterFee = trimPriceStringDecimal(totalBuyAmountAfterFee);
+//    cbTabLog("# Actual Buy Total: $" + totalBuyAmountAfterFee );
+//    cbTabLog("# Placing Buy");
+//    // Send Request
+//    QComboBox *buySpotWith = mParentProphet->mParent->getBuySpotWithPaymentMethodComboBox();
+//    QString selectedPayment = buySpotWith->currentData().toString();
+//    if ( selectedPayment.length() > 0 ) {
+//        QString currencyBought = mParentProphet->mParent->getBuySpotTypeComboBox()->currentText();
+//        QString currencyPaidWith = mParentProphet->mParent->getBuySpotWithPaymentMethodComboBox()->currentText().mid(0,3);
+//        QString accId = selectedPayment;
+//        QString reqBody = "{ \"total\": \"" + totalBuyAmountAfterFee + "\", \"currency\": \"" + currencyPaidWith + "\", \"payment_method\": \"" + selectedPayment + "\" , \"commit\": true }";
+//        //say("## rBody -> " + reqBody);
+//        cbTabLog("# Sending TOTAL: " + totalBuyAmountAfterFee);
+//        cbTabLog("# Sending Currency: " + currencyPaidWith);
+//        cbTabLog("# Sending commit: TRUE");
+//        //cbTabLog("# Sending pm: " + selectedPayment);
+//        //Creating a new coinbaseApiRequest
+//        cbApiRequest* req = new cbApiRequest(this);
+//        req->setMethod("POST");
+//        // We need the id of the account the buy will GO TO
+//        // ie: BTC buy = BTC wallet
+//        // find selected wallet and get id for URL
+//        QString destAccount;
+//        for ( int c=0;c<mAccount->getWalletCount();c++ ){
+//            //say("Wallet Currency: " + mAccount->getWallet(c)->mCurrency );
+//            if ( mAccount->getWallet(c)->mCurrency == currencyBought ) {
+//                destAccount = mAccount->getWallet(c)->mId;
+//            }
+//        }
+//        req->setPath("/v2/accounts/" + destAccount + "/buys");
+//        req->setBody(reqBody);
+//        req->setType("buySpot"); //just for us
+//        req->sendRequest();
+//        cbTabLog("# Buy Requested");
+//    } else {
+//        say("Payment Method Not Selected...");
+//        say("Select a Payment Method!");
+//    }
 
-    //close off printout
-    cbTabLog("################## ");
-    cbTabLog(" ");
-}
+//    //close off printout
+//    cbTabLog("################## ");
+//    cbTabLog(" ");
+//}
 
 //COIN BASE SELL FEES
 //subtotal -> Fee
@@ -673,211 +655,211 @@ void cbApiHandler::buySpotClicked() {
 //$50-$200 = $2.99
 //$200+ = 1.49%
 
-void cbApiHandler::sellSpotClicked() {
-    cbTabLog("### SELL @ SPOT PRICE ### ");
-    QString sellAmount = mParentProphet->mParent->getSellSpotAmount()->text();
-    cbTabLog("# Selling " + sellAmount + " " + mParentProphet->mParent->getSellSpotTypeComboBox()->currentText() );
-    QString spot;
-    if ( mParentProphet->mParent->getSellSpotTypeComboBox()->currentText() == "BTC" ) {
-        spot = mParentProphet->mParent->getBtcSpotSellPriceLabel()->text();
-    } else if ( mParentProphet->mParent->getSellSpotTypeComboBox()->currentText() == "LTC" ) {
-        spot = mParentProphet->mParent->getLtcSpotSellPriceLabel()->text();
-    } else if ( mParentProphet->mParent->getSellSpotTypeComboBox()->currentText() == "ETH" ) {
-        spot = mParentProphet->mParent->getEthSpotSellPriceLabel()->text();
-    }
-    cbTabLog("# Spot Price $" + spot);
-    QString subTotal = QString().setNum(mParentProphet->mParent->getSellSpotTotalLabel()->text().toDouble() + mParentProphet->mParent->getSellSpotFeeLabel()->text().toDouble());
-    subTotal = trimPriceStringDecimal(subTotal);
-    cbTabLog("# Sub-Total: $" + subTotal );
-    QString fee = mParentProphet->findCoinbaseFee(subTotal);
-    fee = trimPriceStringDecimal(fee);    
-    cbTabLog("# Actual Sell Fee: $" + fee );
-    QString totalSellAmountAfterFee = QString().setNum(subTotal.toDouble() - fee.toDouble());
-    totalSellAmountAfterFee = trimPriceStringDecimal(totalSellAmountAfterFee);
-    cbTabLog("# Actual Sell Total: $" + totalSellAmountAfterFee );
-    cbTabLog("# Placing Sell");
-    // Send Request
-    QComboBox *sellSpotWith = mParentProphet->mParent->getSellSpotWithPaymentMethodComboBox();
-    QString selectedPayment = sellSpotWith->currentData().toString();
-    if ( selectedPayment.length() > 0 ) {
-        QString currencySold = mParentProphet->mParent->getSellSpotTypeComboBox()->currentText();
-        QString currencyPaidTo = mParentProphet->mParent->getSellSpotWithPaymentMethodComboBox()->currentText().mid(0,3);
-        QString accId = selectedPayment;
-        QString reqBody = "{ \"total\": \"" + totalSellAmountAfterFee + "\", \"currency\": \"" + currencyPaidTo + "\", \"payment_method\": \"" + selectedPayment + "\" , \"commit\": true }";
-        //say("## rBody -> " + reqBody);
-        cbTabLog("# Sending total: " + totalSellAmountAfterFee);
-        cbTabLog("# Sending Currency: " + currencyPaidTo);
-        cbTabLog("# Sending commit: TRUE");
-        //Creating a new coinbaseApiRequest
-        cbApiRequest* req = new cbApiRequest(this);
-        req->setMethod("POST");
-        // We need the id of the account the buy will GO TO
-        // ie: BTC buy = BTC wallet
-        // find selected wallet and get id for URL
-        QString destAccount;
-        for ( int c=0;c<mAccount->getWalletCount();c++ ){
-            //say("Wallet Currency: " + mAccount->getWallet(c)->mCurrency );
-            if ( mAccount->getWallet(c)->mCurrency == currencySold ) {
-                destAccount = mAccount->getWallet(c)->mId;
-            }
-        }
-        req->setPath("/v2/accounts/" + destAccount + "/sells");
-        req->setBody(reqBody);
-        req->setType("sellSpot"); //just for us
-        req->sendRequest();
-        cbTabLog("# Sell Requested");
-    } else {
-        say("Payment Method Not Selected...");
-        say("Select a Payment Method!");
-    }
+//void cbApiHandler::sellSpotClicked() {
+//    cbTabLog("### SELL @ SPOT PRICE ### ");
+//    QString sellAmount = mParentProphet->mParent->getSellSpotAmount()->text();
+//    cbTabLog("# Selling " + sellAmount + " " + mParentProphet->mParent->getSellSpotTypeComboBox()->currentText() );
+//    QString spot;
+//    if ( mParentProphet->mParent->getSellSpotTypeComboBox()->currentText() == "BTC" ) {
+//        spot = mParentProphet->mParent->getBtcSpotSellPriceLabel()->text();
+//    } else if ( mParentProphet->mParent->getSellSpotTypeComboBox()->currentText() == "LTC" ) {
+//        spot = mParentProphet->mParent->getLtcSpotSellPriceLabel()->text();
+//    } else if ( mParentProphet->mParent->getSellSpotTypeComboBox()->currentText() == "ETH" ) {
+//        spot = mParentProphet->mParent->getEthSpotSellPriceLabel()->text();
+//    }
+//    cbTabLog("# Spot Price $" + spot);
+//    QString subTotal = QString().setNum(mParentProphet->mParent->getSellSpotTotalLabel()->text().toDouble() + mParentProphet->mParent->getSellSpotFeeLabel()->text().toDouble());
+//    subTotal = trimPriceStringDecimal(subTotal);
+//    cbTabLog("# Sub-Total: $" + subTotal );
+//    QString fee = mParentProphet->findCoinbaseFee(subTotal);
+//    fee = trimPriceStringDecimal(fee);
+//    cbTabLog("# Actual Sell Fee: $" + fee );
+//    QString totalSellAmountAfterFee = QString().setNum(subTotal.toDouble() - fee.toDouble());
+//    totalSellAmountAfterFee = trimPriceStringDecimal(totalSellAmountAfterFee);
+//    cbTabLog("# Actual Sell Total: $" + totalSellAmountAfterFee );
+//    cbTabLog("# Placing Sell");
+//    // Send Request
+//    QComboBox *sellSpotWith = mParentProphet->mParent->getSellSpotWithPaymentMethodComboBox();
+//    QString selectedPayment = sellSpotWith->currentData().toString();
+//    if ( selectedPayment.length() > 0 ) {
+//        QString currencySold = mParentProphet->mParent->getSellSpotTypeComboBox()->currentText();
+//        QString currencyPaidTo = mParentProphet->mParent->getSellSpotWithPaymentMethodComboBox()->currentText().mid(0,3);
+//        QString accId = selectedPayment;
+//        QString reqBody = "{ \"total\": \"" + totalSellAmountAfterFee + "\", \"currency\": \"" + currencyPaidTo + "\", \"payment_method\": \"" + selectedPayment + "\" , \"commit\": true }";
+//        //say("## rBody -> " + reqBody);
+//        cbTabLog("# Sending total: " + totalSellAmountAfterFee);
+//        cbTabLog("# Sending Currency: " + currencyPaidTo);
+//        cbTabLog("# Sending commit: TRUE");
+//        //Creating a new coinbaseApiRequest
+//        cbApiRequest* req = new cbApiRequest(this);
+//        req->setMethod("POST");
+//        // We need the id of the account the buy will GO TO
+//        // ie: BTC buy = BTC wallet
+//        // find selected wallet and get id for URL
+//        QString destAccount;
+//        for ( int c=0;c<mAccount->getWalletCount();c++ ){
+//            //say("Wallet Currency: " + mAccount->getWallet(c)->mCurrency );
+//            if ( mAccount->getWallet(c)->mCurrency == currencySold ) {
+//                destAccount = mAccount->getWallet(c)->mId;
+//            }
+//        }
+//        req->setPath("/v2/accounts/" + destAccount + "/sells");
+//        req->setBody(reqBody);
+//        req->setType("sellSpot"); //just for us
+//        req->sendRequest();
+//        cbTabLog("# Sell Requested");
+//    } else {
+//        say("Payment Method Not Selected...");
+//        say("Select a Payment Method!");
+//    }
 
-    //close off printout
-    cbTabLog("################## ");
-    cbTabLog(" ");
-}
+//    //close off printout
+//    cbTabLog("################## ");
+//    cbTabLog(" ");
+//}
 
-void cbApiHandler::QuoteBuySpotClicked() {
-    cbTabLog("### BUY Quote @ SPOT PRICE ### ");
-    QString buyAmount = mParentProphet->mParent->getBuySpotAmount()->text();
-    cbTabLog("# Buying " + buyAmount + " " + mParentProphet->mParent->getBuySpotTypeComboBox()->currentText() );
-    QString spot;
-    if ( mParentProphet->mParent->getBuySpotTypeComboBox()->currentText() == "BTC" ) {
-        spot = mParentProphet->mParent->getBtcSpotBuyPriceLabel()->text();
-    } else if ( mParentProphet->mParent->getBuySpotTypeComboBox()->currentText() == "LTC" ) {
-        spot = mParentProphet->mParent->getLtcSpotBuyPriceLabel()->text();
-    } else if ( mParentProphet->mParent->getBuySpotTypeComboBox()->currentText() == "ETH" ) {
-        spot = mParentProphet->mParent->getEthSpotBuyPriceLabel()->text();
-    }
-    cbTabLog("# Spot Price $" + spot);
-    QString subTotal = QString().setNum(spot.toDouble() * buyAmount.toDouble());
-    subTotal = trimPriceStringDecimal(subTotal);
-    cbTabLog("# Sub-Total: $" + subTotal );
-    QString feePct = "1.49"; //For ACH minimum is $0.15
-    QString feeDec = QString().setNum(feePct.toDouble()*0.01);
-    QString fee = QString().setNum(subTotal.toDouble() * feeDec.toDouble());
-    cbTabLog("# Buy Fee (%): " + feePct + "%");
-    fee = trimPriceStringDecimal(fee);
-    if ( fee.toDouble() < 0.99 ) {
-        fee = "0.99";
-    }
-    cbTabLog("# Buy Fee: $" + fee );
-    QString totalBuyAmountAfterFee = QString().setNum(fee.toDouble() + subTotal.toDouble());
-    totalBuyAmountAfterFee = trimPriceStringDecimal(totalBuyAmountAfterFee);
-    cbTabLog("# Buy Total: $" + totalBuyAmountAfterFee );
-    mParentProphet->mParent->getBuySpotFeeLabel()->setText("$" + fee);
-    mParentProphet->mParent->getBuySpotTotalLabel()->setText("$" + totalBuyAmountAfterFee);
-    cbTabLog("# Confirming Quote");
-    // Send Request
-    QComboBox *buySpotWith = mParentProphet->mParent->getBuySpotWithPaymentMethodComboBox();
-    QString selectedPayment = buySpotWith->currentData().toString();
-    if ( selectedPayment.length() > 0 ) {
-        QString currencyBought = mParentProphet->mParent->getBuySpotTypeComboBox()->currentText();
-        QString currencyPaidWith = mParentProphet->mParent->getBuySpotWithPaymentMethodComboBox()->currentText().mid(0,3);
-        QString accId = selectedPayment;
-        QString reqBody = "{ \"total\": \"" + totalBuyAmountAfterFee + "\", \"currency\": \"" + currencyPaidWith + "\", \"payment_method\": \"" + selectedPayment + "\" , \"commit\": false,\"quote\": true }";
-        //say("## rBody -> " + reqBody);
-        cbTabLog("# Sending TOTAL: " + totalBuyAmountAfterFee);
-        cbTabLog("# Sending Currency: " + currencyPaidWith);
-        cbTabLog("# Sending commit: FALSE");
-        cbTabLog("# Sending quote: TRUE");
-        //cbTabLog("# Sending pm: " + selectedPayment);
-        //Creating a new coinbaseApiRequest
-        cbApiRequest* req = new cbApiRequest(this);
-        req->setMethod("POST");
-        // We need the id of the account the buy will GO TO
-        // ie: BTC buy = BTC wallet
-        // find selected wallet and get id for URL
-        QString destAccount;
-        for ( int c=0;c<mAccount->getWalletCount();c++ ){
-            //say("Wallet Currency: " + mAccount->getWallet(c)->mCurrency );
-            if ( mAccount->getWallet(c)->mCurrency == currencyBought ) {
-                destAccount = mAccount->getWallet(c)->mId;
-            }
-        }
-        req->setPath("/v2/accounts/" + destAccount + "/buys");
-        req->setBody(reqBody);
-        req->setType("buySpotQuote"); //just for us
-        req->sendRequest();
-        cbTabLog("# Quote Requested");
-    } else {
-        say("Payment Method Not Selected...");
-        say("Select a Payment Method!");
-    }
+//void cbApiHandler::QuoteBuySpotClicked() {
+//    cbTabLog("### BUY Quote @ SPOT PRICE ### ");
+//    QString buyAmount = mParentProphet->mParent->getBuySpotAmount()->text();
+//    cbTabLog("# Buying " + buyAmount + " " + mParentProphet->mParent->getBuySpotTypeComboBox()->currentText() );
+//    QString spot;
+//    if ( mParentProphet->mParent->getBuySpotTypeComboBox()->currentText() == "BTC" ) {
+//        spot = mParentProphet->mParent->getBtcSpotBuyPriceLabel()->text();
+//    } else if ( mParentProphet->mParent->getBuySpotTypeComboBox()->currentText() == "LTC" ) {
+//        spot = mParentProphet->mParent->getLtcSpotBuyPriceLabel()->text();
+//    } else if ( mParentProphet->mParent->getBuySpotTypeComboBox()->currentText() == "ETH" ) {
+//        spot = mParentProphet->mParent->getEthSpotBuyPriceLabel()->text();
+//    }
+//    cbTabLog("# Spot Price $" + spot);
+//    QString subTotal = QString().setNum(spot.toDouble() * buyAmount.toDouble());
+//    subTotal = trimPriceStringDecimal(subTotal);
+//    cbTabLog("# Sub-Total: $" + subTotal );
+//    QString feePct = "1.49"; //For ACH minimum is $0.15
+//    QString feeDec = QString().setNum(feePct.toDouble()*0.01);
+//    QString fee = QString().setNum(subTotal.toDouble() * feeDec.toDouble());
+//    cbTabLog("# Buy Fee (%): " + feePct + "%");
+//    fee = trimPriceStringDecimal(fee);
+//    if ( fee.toDouble() < 0.99 ) {
+//        fee = "0.99";
+//    }
+//    cbTabLog("# Buy Fee: $" + fee );
+//    QString totalBuyAmountAfterFee = QString().setNum(fee.toDouble() + subTotal.toDouble());
+//    totalBuyAmountAfterFee = trimPriceStringDecimal(totalBuyAmountAfterFee);
+//    cbTabLog("# Buy Total: $" + totalBuyAmountAfterFee );
+//    mParentProphet->mParent->getBuySpotFeeLabel()->setText("$" + fee);
+//    mParentProphet->mParent->getBuySpotTotalLabel()->setText("$" + totalBuyAmountAfterFee);
+//    cbTabLog("# Confirming Quote");
+//    // Send Request
+//    QComboBox *buySpotWith = mParentProphet->mParent->getBuySpotWithPaymentMethodComboBox();
+//    QString selectedPayment = buySpotWith->currentData().toString();
+//    if ( selectedPayment.length() > 0 ) {
+//        QString currencyBought = mParentProphet->mParent->getBuySpotTypeComboBox()->currentText();
+//        QString currencyPaidWith = mParentProphet->mParent->getBuySpotWithPaymentMethodComboBox()->currentText().mid(0,3);
+//        QString accId = selectedPayment;
+//        QString reqBody = "{ \"total\": \"" + totalBuyAmountAfterFee + "\", \"currency\": \"" + currencyPaidWith + "\", \"payment_method\": \"" + selectedPayment + "\" , \"commit\": false,\"quote\": true }";
+//        //say("## rBody -> " + reqBody);
+//        cbTabLog("# Sending TOTAL: " + totalBuyAmountAfterFee);
+//        cbTabLog("# Sending Currency: " + currencyPaidWith);
+//        cbTabLog("# Sending commit: FALSE");
+//        cbTabLog("# Sending quote: TRUE");
+//        //cbTabLog("# Sending pm: " + selectedPayment);
+//        //Creating a new coinbaseApiRequest
+//        cbApiRequest* req = new cbApiRequest(this);
+//        req->setMethod("POST");
+//        // We need the id of the account the buy will GO TO
+//        // ie: BTC buy = BTC wallet
+//        // find selected wallet and get id for URL
+//        QString destAccount;
+//        for ( int c=0;c<mAccount->getWalletCount();c++ ){
+//            //say("Wallet Currency: " + mAccount->getWallet(c)->mCurrency );
+//            if ( mAccount->getWallet(c)->mCurrency == currencyBought ) {
+//                destAccount = mAccount->getWallet(c)->mId;
+//            }
+//        }
+//        req->setPath("/v2/accounts/" + destAccount + "/buys");
+//        req->setBody(reqBody);
+//        req->setType("buySpotQuote"); //just for us
+//        req->sendRequest();
+//        cbTabLog("# Quote Requested");
+//    } else {
+//        say("Payment Method Not Selected...");
+//        say("Select a Payment Method!");
+//    }
 
-    //close off printout
-    cbTabLog("################## ");
-    cbTabLog(" ");
-}
-
-
-void cbApiHandler::QuoteSellSpotClicked() {
-    cbTabLog("### SELL Quote @ SPOT PRICE ### ");
-    QString sellAmount = mParentProphet->mParent->getSellSpotAmount()->text();
-    cbTabLog("# Selling " + sellAmount + " " + mParentProphet->mParent->getSellSpotTypeComboBox()->currentText() );
-    QString spot;
-    if ( mParentProphet->mParent->getSellSpotTypeComboBox()->currentText() == "BTC" ) {
-        spot = mParentProphet->mParent->getBtcSpotSellPriceLabel()->text();
-    } else if ( mParentProphet->mParent->getSellSpotTypeComboBox()->currentText() == "LTC" ) {
-        spot = mParentProphet->mParent->getLtcSpotSellPriceLabel()->text();
-    } else if ( mParentProphet->mParent->getSellSpotTypeComboBox()->currentText() == "ETH" ) {
-        spot = mParentProphet->mParent->getEthSpotSellPriceLabel()->text();
-    }
-    cbTabLog("# Spot Price $" + spot);
-    QString subTotal = QString().setNum(spot.toDouble() * sellAmount.toDouble());
-    subTotal = trimPriceStringDecimal(subTotal);
-    cbTabLog("# Sub-Total: $" + subTotal );
-    QString feePct = "Varies"; //For ACH minimum is $0.15
-    QString fee = mParentProphet->findCoinbaseFee(subTotal);
-    fee = trimPriceStringDecimal(fee);    
-    cbTabLog("# Sell Fee: $" + fee );
-    QString totalSellAmountAfterFee = QString().setNum(subTotal.toDouble() - fee.toDouble());
-    totalSellAmountAfterFee = trimPriceStringDecimal(totalSellAmountAfterFee);
-    cbTabLog("# Sale Est: $" + totalSellAmountAfterFee );
-    mParentProphet->mParent->getSellSpotFeeLabel()->setText("$" + fee);
-    mParentProphet->mParent->getSellSpotTotalLabel()->setText("$" + totalSellAmountAfterFee);
-    cbTabLog("# Confirming Quote");
-    // Send Request
-
-    QComboBox *sellSpotWith = mParentProphet->mParent->getSellSpotWithPaymentMethodComboBox();
-    QString selectedPayment = sellSpotWith->currentData().toString();
-    if ( selectedPayment.length() > 0 ) {
-        QString currencySold = mParentProphet->mParent->getSellSpotTypeComboBox()->currentText();
-        QString currencyPaidTo = mParentProphet->mParent->getSellSpotWithPaymentMethodComboBox()->currentText().mid(0,3);
-        QString accId = selectedPayment;
-        QString reqBody = "{ \"total\": \"" + totalSellAmountAfterFee + "\", \"currency\": \"" + currencyPaidTo + "\", \"payment_method\": \"" + selectedPayment + "\" , \"commit\": false,\"quote\": true }";
-        //say("## rBody -> " + reqBody);
-        cbTabLog("# Sending TOTAL: " + totalSellAmountAfterFee);
-        cbTabLog("# Sending Currency: " + currencyPaidTo);
-        cbTabLog("# Sending commit: FALSE");
-        cbTabLog("# Sending quote: TRUE");
-        //Creating a new coinbaseApiRequest
-        cbApiRequest* req = new cbApiRequest(this);
-        req->setMethod("POST");
-        // We need the id of the account the buy will GO TO
-        // ie: BTC buy = BTC wallet
-        // find selected wallet and get id for URL
-        QString destAccount;
-        for ( int c=0;c<mAccount->getWalletCount();c++ ){
-            //say("Wallet Currency: " + mAccount->getWallet(c)->mCurrency );
-            if ( mAccount->getWallet(c)->mCurrency == currencySold ) {
-                destAccount = mAccount->getWallet(c)->mId;
-            }
-        }
-        req->setPath("/v2/accounts/" + destAccount + "/sells");
-        req->setBody(reqBody);
-        req->setType("sellSpotQuote"); //just for us
-        req->sendRequest();
-        cbTabLog("# Quote Requested");
-    } else {
-        say("Payment Method Not Selected...");
-        say("Select a Payment Method!");
-    }
+//    //close off printout
+//    cbTabLog("################## ");
+//    cbTabLog(" ");
+//}
 
 
-    //close off printout
-    cbTabLog("################## ");
-    cbTabLog(" ");
-}
+//void cbApiHandler::QuoteSellSpotClicked() {
+//    cbTabLog("### SELL Quote @ SPOT PRICE ### ");
+//    QString sellAmount = mParentProphet->mParent->getSellSpotAmount()->text();
+//    cbTabLog("# Selling " + sellAmount + " " + mParentProphet->mParent->getSellSpotTypeComboBox()->currentText() );
+//    QString spot;
+//    if ( mParentProphet->mParent->getSellSpotTypeComboBox()->currentText() == "BTC" ) {
+//        spot = mParentProphet->mParent->getBtcSpotSellPriceLabel()->text();
+//    } else if ( mParentProphet->mParent->getSellSpotTypeComboBox()->currentText() == "LTC" ) {
+//        spot = mParentProphet->mParent->getLtcSpotSellPriceLabel()->text();
+//    } else if ( mParentProphet->mParent->getSellSpotTypeComboBox()->currentText() == "ETH" ) {
+//        spot = mParentProphet->mParent->getEthSpotSellPriceLabel()->text();
+//    }
+//    cbTabLog("# Spot Price $" + spot);
+//    QString subTotal = QString().setNum(spot.toDouble() * sellAmount.toDouble());
+//    subTotal = trimPriceStringDecimal(subTotal);
+//    cbTabLog("# Sub-Total: $" + subTotal );
+//    QString feePct = "Varies"; //For ACH minimum is $0.15
+//    QString fee = mParentProphet->findCoinbaseFee(subTotal);
+//    fee = trimPriceStringDecimal(fee);
+//    cbTabLog("# Sell Fee: $" + fee );
+//    QString totalSellAmountAfterFee = QString().setNum(subTotal.toDouble() - fee.toDouble());
+//    totalSellAmountAfterFee = trimPriceStringDecimal(totalSellAmountAfterFee);
+//    cbTabLog("# Sale Est: $" + totalSellAmountAfterFee );
+//    mParentProphet->mParent->getSellSpotFeeLabel()->setText("$" + fee);
+//    mParentProphet->mParent->getSellSpotTotalLabel()->setText("$" + totalSellAmountAfterFee);
+//    cbTabLog("# Confirming Quote");
+//    // Send Request
+
+//    QComboBox *sellSpotWith = mParentProphet->mParent->getSellSpotWithPaymentMethodComboBox();
+//    QString selectedPayment = sellSpotWith->currentData().toString();
+//    if ( selectedPayment.length() > 0 ) {
+//        QString currencySold = mParentProphet->mParent->getSellSpotTypeComboBox()->currentText();
+//        QString currencyPaidTo = mParentProphet->mParent->getSellSpotWithPaymentMethodComboBox()->currentText().mid(0,3);
+//        QString accId = selectedPayment;
+//        QString reqBody = "{ \"total\": \"" + totalSellAmountAfterFee + "\", \"currency\": \"" + currencyPaidTo + "\", \"payment_method\": \"" + selectedPayment + "\" , \"commit\": false,\"quote\": true }";
+//        //say("## rBody -> " + reqBody);
+//        cbTabLog("# Sending TOTAL: " + totalSellAmountAfterFee);
+//        cbTabLog("# Sending Currency: " + currencyPaidTo);
+//        cbTabLog("# Sending commit: FALSE");
+//        cbTabLog("# Sending quote: TRUE");
+//        //Creating a new coinbaseApiRequest
+//        cbApiRequest* req = new cbApiRequest(this);
+//        req->setMethod("POST");
+//        // We need the id of the account the buy will GO TO
+//        // ie: BTC buy = BTC wallet
+//        // find selected wallet and get id for URL
+//        QString destAccount;
+//        for ( int c=0;c<mAccount->getWalletCount();c++ ){
+//            //say("Wallet Currency: " + mAccount->getWallet(c)->mCurrency );
+//            if ( mAccount->getWallet(c)->mCurrency == currencySold ) {
+//                destAccount = mAccount->getWallet(c)->mId;
+//            }
+//        }
+//        req->setPath("/v2/accounts/" + destAccount + "/sells");
+//        req->setBody(reqBody);
+//        req->setType("sellSpotQuote"); //just for us
+//        req->sendRequest();
+//        cbTabLog("# Quote Requested");
+//    } else {
+//        say("Payment Method Not Selected...");
+//        say("Select a Payment Method!");
+//    }
+
+
+//    //close off printout
+//    cbTabLog("################## ");
+//    cbTabLog(" ");
+//}
 
 void cbApiHandler::cbTabLog(QString logString) {
     mParentProphet->mParent->getCoinbaseTabLog()->append(logString);

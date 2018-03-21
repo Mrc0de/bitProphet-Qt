@@ -26,7 +26,7 @@ public:
     QString findLowestPrice(QList<QString> hayStack);
     QString findHighestPrice(QList<QString> hayStack);
     QString findPriceGap(QList<QString> hayStack);
-    void checkAutoBuysForProfit(QString coin);
+//    void checkAutoBuysForProfit(QString coin);
     QString mLastSellPriceBtc;
     QString mLastSellPriceLtc;
     QString mLastSellPriceEth;

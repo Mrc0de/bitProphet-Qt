@@ -56,15 +56,15 @@ public:
     ///////////////////////////
     // Other junk
     bpWindow *mParent;
-    void setBtcSpotPrice(cbApiResponse*);
-    void setLtcSpotPrice(cbApiResponse*);
-    void setEthSpotPrice(cbApiResponse*);
-    void setBtcSpotSellPrice(cbApiResponse*);
-    void setLtcSpotSellPrice(cbApiResponse*);
-    void setEthSpotSellPrice(cbApiResponse*);
-    void setBtcSpotBuyPrice(cbApiResponse*);
-    void setLtcSpotBuyPrice(cbApiResponse*);
-    void setEthSpotBuyPrice(cbApiResponse*);
+//    void setBtcSpotPrice(cbApiResponse*);
+//    void setLtcSpotPrice(cbApiResponse*);
+//    void setEthSpotPrice(cbApiResponse*);
+//    void setBtcSpotSellPrice(cbApiResponse*);
+//    void setLtcSpotSellPrice(cbApiResponse*);
+//    void setEthSpotSellPrice(cbApiResponse*);
+//    void setBtcSpotBuyPrice(cbApiResponse*);
+//    void setLtcSpotBuyPrice(cbApiResponse*);
+//    void setEthSpotBuyPrice(cbApiResponse*);
     void sellAutoBuyId(QString id, QString coin, QString total);
     coinbaseAccount *getHandlerAccount();
     gdaxAccount *getGdaxHandlerAccount();

@@ -80,12 +80,12 @@ public slots:
     void fetchETHSpotSellPrice();
     void depositFromButtonSlot();
     void withdrawToButtonSlot();
-    void QuoteBuySpotClicked();
-    void QuoteSellSpotClicked();
+//    void QuoteBuySpotClicked();
+//    void QuoteSellSpotClicked();
     void disableBuySpotButton();
     void disableSellSpotButton();
-    void buySpotClicked();
-    void sellSpotClicked();
+//    void buySpotClicked();
+//    void sellSpotClicked();
     void fetchTransactions();
     void processBuySpotResponse( cbApiResponse *resp );
     void processSellSpotResponse( cbApiResponse *resp );    

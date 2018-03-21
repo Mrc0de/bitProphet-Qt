@@ -74,19 +74,19 @@ public:
     QTableWidget *getCbAutoSpotTraderTransactionTablePlacer();
     QLabel *getAccountsNativeBalanceTotalLabel();
     // Spot Price Labels
-    QLabel *getBtcSpotPriceLabel();
-    QLabel *getLtcSpotPriceLabel();
-    QLabel *getEthSpotPriceLabel();
+//    QLabel *getBtcSpotPriceLabel();
+//    QLabel *getLtcSpotPriceLabel();
+//    QLabel *getEthSpotPriceLabel();
     QLabel *getBuySpotFeeLabel();
     QLabel *getBuySpotTotalLabel();
     QLabel *getSellSpotFeeLabel();
     QLabel *getSellSpotTotalLabel();
-    QLabel *getBtcSpotBuyPriceLabel();
-    QLabel *getLtcSpotBuyPriceLabel();
-    QLabel *getEthSpotBuyPriceLabel();
-    QLabel *getBtcSpotSellPriceLabel();
-    QLabel *getLtcSpotSellPriceLabel();
-    QLabel *getEthSpotSellPriceLabel();    
+//    QLabel *getBtcSpotBuyPriceLabel();
+//    QLabel *getLtcSpotBuyPriceLabel();
+//    QLabel *getEthSpotBuyPriceLabel();
+//    QLabel *getBtcSpotSellPriceLabel();
+//    QLabel *getLtcSpotSellPriceLabel();
+//    QLabel *getEthSpotSellPriceLabel();
     QLabel *getGdaxBtcPriceLabel();
     QLabel *getGdaxBtcAskLabel();
     QLabel *getGdaxBtcBidLabel();
@@ -144,7 +144,7 @@ private:
 private slots:
     void accountSetupClicked();
     void accountSetupGDAXClicked();
-    void on_mAutoSpotTradeEnabledCheckBox_toggled(bool checked);
+//    void on_mAutoSpotTradeEnabledCheckBox_toggled(bool checked);
     void on_mAutoRefreshBalanceCheckBox_toggled(bool checked);
     void on_mGdaxTransferFrom_released();
     void on_mGdaxTransferTo_released();

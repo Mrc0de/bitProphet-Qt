@@ -70,41 +70,41 @@ QLabel *bpWindow::getAccountsNativeBalanceTotalLabel() {
     return ui->mTotalNativeValue;
 }
 
-QLabel *bpWindow::getBtcSpotPriceLabel() {
-    return ui->mBtcSpotPriceLabel;
-}
+//QLabel *bpWindow::getBtcSpotPriceLabel() {
+//    return ui->mBtcSpotPriceLabel;
+//}
 
-QLabel *bpWindow::getLtcSpotPriceLabel() {
-    return ui->mLtcSpotPriceLabel;
-}
+//QLabel *bpWindow::getLtcSpotPriceLabel() {
+//    return ui->mLtcSpotPriceLabel;
+//}
 
-QLabel *bpWindow::getEthSpotPriceLabel() {
-    return ui->mEthSpotPriceLabel;
-}
+//QLabel *bpWindow::getEthSpotPriceLabel() {
+//    return ui->mEthSpotPriceLabel;
+//}
 
-QLabel *bpWindow::getBtcSpotBuyPriceLabel() {
-    return ui->mBtcSpotBuyPriceLabel;
-}
+//QLabel *bpWindow::getBtcSpotBuyPriceLabel() {
+//    return ui->mBtcSpotBuyPriceLabel;
+//}
 
-QLabel *bpWindow::getLtcSpotBuyPriceLabel() {
-    return ui->mLtcSpotBuyPriceLabel;
-}
+//QLabel *bpWindow::getLtcSpotBuyPriceLabel() {
+//    return ui->mLtcSpotBuyPriceLabel;
+//}
 
-QLabel *bpWindow::getEthSpotBuyPriceLabel() {
-    return ui->mEthSpotBuyPriceLabel;
-}
+//QLabel *bpWindow::getEthSpotBuyPriceLabel() {
+//    return ui->mEthSpotBuyPriceLabel;
+//}
 
-QLabel *bpWindow::getBtcSpotSellPriceLabel() {
-    return ui->mBtcSpotSellPriceLabel;
-}
+//QLabel *bpWindow::getBtcSpotSellPriceLabel() {
+//    return ui->mBtcSpotSellPriceLabel;
+//}
 
-QLabel *bpWindow::getLtcSpotSellPriceLabel() {
-    return ui->mLtcSpotSellPriceLabel;
-}
+//QLabel *bpWindow::getLtcSpotSellPriceLabel() {
+//    return ui->mLtcSpotSellPriceLabel;
+//}
 
-QLabel *bpWindow::getEthSpotSellPriceLabel() {
-    return ui->mEthSpotSellPriceLabel;
-}
+//QLabel *bpWindow::getEthSpotSellPriceLabel() {
+//    return ui->mEthSpotSellPriceLabel;
+//}
 
 
 
@@ -202,21 +202,21 @@ QLineEdit *bpWindow::getSellSpotAmount() {
     return ui->mSellSpotAmount;
 }
 
-QFrame *bpWindow::getCbBTCPricePlacer() {
-    return ui->mCbBTCPriceChartPlacer;
-}
+//QFrame *bpWindow::getCbBTCPricePlacer() {
+//    return ui->mCbBTCPriceChartPlacer;
+//}
 
-QFrame *bpWindow::getCbLTCPricePlacer() {
-    return ui->mCbLTCPriceChartPlacer;
-}
+//QFrame *bpWindow::getCbLTCPricePlacer() {
+//    return ui->mCbLTCPriceChartPlacer;
+//}
 
-QFrame *bpWindow::getCbETHPricePlacer() {
-    return ui->mCbETHPriceChartPlacer;
-}
+//QFrame *bpWindow::getCbETHPricePlacer() {
+//    return ui->mCbETHPriceChartPlacer;
+//}
 
-QWidget *bpWindow::getChartsTab() {
-    return ui->mChartsTab;
-}
+//QWidget *bpWindow::getChartsTab() {
+//    return ui->mChartsTab;
+//}
 
 QWidget *bpWindow::getTransactionTab() {
     return ui->mTransactionsTab;
@@ -445,15 +445,15 @@ void bpWindow::accountSetupGDAXClicked() {
     mGdaxSetupWin->show();
 }
 
-void bpWindow::on_mAutoSpotTradeEnabledCheckBox_toggled(bool checked) {
-    if ( checked ) {
-        mProphet->say("Enabling Auto Spot Trader.");
-        mProphet->enableAutoSpotTrader();
-    } else {
-        mProphet->say("Disabling Auto Spot Trader.");
-        mProphet->disableAutoSpotTrader();
-    }
-}
+//void bpWindow::on_mAutoSpotTradeEnabledCheckBox_toggled(bool checked) {
+//    if ( checked ) {
+//        mProphet->say("Enabling Auto Spot Trader.");
+//        mProphet->enableAutoSpotTrader();
+//    } else {
+//        mProphet->say("Disabling Auto Spot Trader.");
+//        mProphet->disableAutoSpotTrader();
+//    }
+//}
 
 void bpWindow::on_mAutoRefreshBalanceCheckBox_toggled(bool checked) {
     if ( checked ) {

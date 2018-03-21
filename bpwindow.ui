@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>920</width>
-    <height>708</height>
+    <width>1331</width>
+    <height>899</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,14 +23,14 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>59</y>
-      <width>651</width>
-      <height>621</height>
+      <x>10</x>
+      <y>60</y>
+      <width>1061</width>
+      <height>811</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="mStatusTab">
      <attribute name="title">
@@ -44,8 +44,8 @@
        <rect>
         <x>0</x>
         <y>10</y>
-        <width>641</width>
-        <height>441</height>
+        <width>1051</width>
+        <height>261</height>
        </rect>
       </property>
       <property name="readOnly">
@@ -68,7 +68,7 @@
        <rect>
         <x>10</x>
         <y>40</y>
-        <width>621</width>
+        <width>1041</width>
         <height>192</height>
        </rect>
       </property>
@@ -626,7 +626,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>40</y>
+        <y>10</y>
         <width>51</width>
         <height>21</height>
        </rect>
@@ -642,7 +642,7 @@
       <property name="geometry">
        <rect>
         <x>320</x>
-        <y>40</y>
+        <y>10</y>
         <width>131</width>
         <height>21</height>
        </rect>
@@ -658,7 +658,7 @@
       <property name="geometry">
        <rect>
         <x>60</x>
-        <y>40</y>
+        <y>10</y>
         <width>251</width>
         <height>22</height>
        </rect>
@@ -668,9 +668,9 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>70</y>
-        <width>621</width>
-        <height>161</height>
+        <y>40</y>
+        <width>631</width>
+        <height>191</height>
        </rect>
       </property>
      </widget>
@@ -1479,11 +1479,6 @@
       </widget>
      </widget>
     </widget>
-    <widget class="QWidget" name="mGdaxDataTab">
-     <attribute name="title">
-      <string>GDAX Data</string>
-     </attribute>
-    </widget>
     <widget class="QWidget" name="mTransactionsTab">
      <attribute name="title">
       <string>Transactions</string>
@@ -1564,70 +1559,6 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="mChartsTab">
-     <attribute name="title">
-      <string>Charts</string>
-     </attribute>
-     <attribute name="toolTip">
-      <string>Graphs, Charts and Tables, etc</string>
-     </attribute>
-     <widget class="QFrame" name="mCbBTCPriceChartPlacer">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>651</width>
-        <height>191</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-     </widget>
-     <widget class="QFrame" name="mCbLTCPriceChartPlacer">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>200</y>
-        <width>651</width>
-        <height>191</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-     </widget>
-     <widget class="QFrame" name="mCbETHPriceChartPlacer">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>400</y>
-        <width>651</width>
-        <height>191</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="mNeuralTab">
-     <attribute name="title">
-      <string>Neural</string>
-     </attribute>
-     <attribute name="toolTip">
-      <string>bitProphet's Neural Network</string>
-     </attribute>
-    </widget>
     <widget class="QWidget" name="mDatabaseTab">
      <attribute name="title">
       <string>Database</string>
@@ -1640,10 +1571,10 @@
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>660</x>
+      <x>1080</x>
       <y>79</y>
       <width>241</width>
-      <height>601</height>
+      <height>251</height>
      </rect>
     </property>
     <property name="toolTip">
@@ -1658,7 +1589,7 @@
     <property name="checkable">
      <bool>false</bool>
     </property>
-    <widget class="QGroupBox" name="groupBox_2">
+    <widget class="QGroupBox" name="prophetStateBox">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -1670,7 +1601,7 @@
      <property name="title">
       <string>Prophet State</string>
      </property>
-     <widget class="QLabel" name="label_5">
+     <widget class="QLabel" name="idleStateLabel">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -1701,7 +1632,7 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="label_9">
+     <widget class="QLabel" name="fetchStateLabel">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -1732,7 +1663,7 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLabel" name="label_10">
+     <widget class="QLabel" name="loadStateLabel">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -1764,7 +1695,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QGroupBox" name="groupBox_4">
+    <widget class="QGroupBox" name="cbRequestStatsBox">
      <property name="geometry">
       <rect>
        <x>100</x>
@@ -1881,7 +1812,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QGroupBox" name="groupBox_5">
+    <widget class="QGroupBox" name="gdaxRequestStatsBox">
      <property name="geometry">
       <rect>
        <x>100</x>
@@ -1999,244 +1930,10 @@
      </widget>
     </widget>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QGroupBox" name="GDAXlivePricesBox">
     <property name="geometry">
      <rect>
-      <x>6</x>
-      <y>0</y>
-      <width>31</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>BTC $</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="mBtcSpotPriceLabel">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>0</y>
-      <width>121</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>0</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>0</y>
-      <width>31</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>LTC $</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="mLtcSpotPriceLabel">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>0</y>
-      <width>121</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>0</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>0</y>
-      <width>31</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>ETH $</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="mEthSpotPriceLabel">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>0</y>
-      <width>121</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>0</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="mBtcSpotBuyPriceLabel">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>10</y>
-      <width>121</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>0</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="mLtcSpotBuyPriceLabel">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>10</y>
-      <width>121</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>0</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_18">
-    <property name="geometry">
-     <rect>
-      <x>6</x>
-      <y>10</y>
-      <width>31</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Buy $</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="mEthSpotBuyPriceLabel">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>10</y>
-      <width>121</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>0</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_19">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>10</y>
-      <width>31</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Buy $</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_20">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>10</y>
-      <width>31</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Buy $</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="mLtcSpotSellPriceLabel">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>20</y>
-      <width>121</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>0</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_21">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>20</y>
-      <width>31</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Sell $</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_22">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>20</y>
-      <width>31</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Sell $</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="mEthSpotSellPriceLabel">
-    <property name="geometry">
-     <rect>
-      <x>360</x>
-      <y>20</y>
-      <width>121</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>0</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_23">
-    <property name="geometry">
-     <rect>
-      <x>6</x>
-      <y>20</y>
-      <width>31</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Sell $</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="mBtcSpotSellPriceLabel">
-    <property name="geometry">
-     <rect>
-      <x>40</x>
-      <y>20</y>
-      <width>121</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>0</string>
-    </property>
-   </widget>
-   <widget class="QGroupBox" name="groupBox_3">
-    <property name="geometry">
-     <rect>
-      <x>489</x>
+      <x>0</x>
       <y>-1</y>
       <width>421</width>
       <height>51</height>
@@ -2483,7 +2180,7 @@
      </property>
     </widget>
    </widget>
-   <widget class="QCheckBox" name="mAutoGDAXTradeEnabledCheckBox_2">
+   <widget class="QCheckBox" name="mAutoGDAXTradeEnabledCheckBox_3">
     <property name="enabled">
      <bool>false</bool>
     </property>
@@ -2491,25 +2188,6 @@
      <rect>
       <x>10</x>
       <y>40</y>
-      <width>171</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Auto Refresh Spot Price</string>
-    </property>
-    <property name="checked">
-     <bool>false</bool>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="mAutoGDAXTradeEnabledCheckBox_3">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>660</x>
-      <y>50</y>
       <width>171</width>
       <height>21</height>
      </rect>
@@ -2527,7 +2205,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>920</width>
+     <width>1331</width>
      <height>21</height>
     </rect>
    </property>

@@ -157,7 +157,7 @@ void cbAutoSpotTrader::autoTradeCheck() {
                 //sell or hodl
     for (int c=0;c<mTradeTypes.length();c++) {
         QString currCoin = mTradeTypes.at(c);
-        checkAutoBuysForProfit(currCoin);
+//        checkAutoBuysForProfit(currCoin);
     }
     //Finally, restart timer
     if ( mParent->mAutoSpotTrade ) {
@@ -165,49 +165,49 @@ void cbAutoSpotTrader::autoTradeCheck() {
     }
 }
 
-void cbAutoSpotTrader::checkAutoBuysForProfit (QString coin) {
-    say("#################",coin);
-    say("# Check Sales "+coin,coin);
-    QList<QString> forSale;
-    QList<QString> forSaleBoughtForPrices;
-    QList<QString> forSaleCoinAmounts;
-    mParent->getDb()->getAutoSpotBuysForSaleList(&forSale,&forSaleBoughtForPrices,&forSaleCoinAmounts,coin);
-    //say("# No. For Sale: "+ QString().setNum(forSale.count()),coin);
+//void cbAutoSpotTrader::checkAutoBuysForProfit (QString coin) {
+//    say("#################",coin);
+//    say("# Check Sales "+coin,coin);
+//    QList<QString> forSale;
+//    QList<QString> forSaleBoughtForPrices;
+//    QList<QString> forSaleCoinAmounts;
+//    mParent->getDb()->getAutoSpotBuysForSaleList(&forSale,&forSaleBoughtForPrices,&forSaleCoinAmounts,coin);
+//    //say("# No. For Sale: "+ QString().setNum(forSale.count()),coin);
 
-    for ( int z=0;z<forSale.count();z++ ) {
-        //say("# ID: "+forSale.at(z),coin);
-        //say("# Qty: "+forSaleCoinAmounts.at(z),coin);
-        //say("# Cost: "+forSaleBoughtForPrices.at(z),coin);
-        // Figure out sell price for profits
-        QString curSellPrice;
-        if ( coin == "BTC" ) {
-            curSellPrice = mParent->mParent->getBtcSpotSellPriceLabel()->text();
-        } else if ( coin == "LTC" ) {
-            curSellPrice = mParent->mParent->getLtcSpotSellPriceLabel()->text();
-        } else if ( coin == "ETH" ) {
-            curSellPrice = mParent->mParent->getEthSpotSellPriceLabel()->text();
-        }
-        QString ifSoldNow = QString().setNum(curSellPrice.toDouble() * forSaleCoinAmounts.at(z).toDouble());
-        QString sellFee = mParent->findCoinbaseFee(ifSoldNow);
+//    for ( int z=0;z<forSale.count();z++ ) {
+//        //say("# ID: "+forSale.at(z),coin);
+//        //say("# Qty: "+forSaleCoinAmounts.at(z),coin);
+//        //say("# Cost: "+forSaleBoughtForPrices.at(z),coin);
+//        // Figure out sell price for profits
+//        QString curSellPrice;
+//        if ( coin == "BTC" ) {
+//            curSellPrice = mParent->mParent->getBtcSpotSellPriceLabel()->text();
+//        } else if ( coin == "LTC" ) {
+//            curSellPrice = mParent->mParent->getLtcSpotSellPriceLabel()->text();
+//        } else if ( coin == "ETH" ) {
+//            curSellPrice = mParent->mParent->getEthSpotSellPriceLabel()->text();
+//        }
+//        QString ifSoldNow = QString().setNum(curSellPrice.toDouble() * forSaleCoinAmounts.at(z).toDouble());
+//        QString sellFee = mParent->findCoinbaseFee(ifSoldNow);
 
-        QString ifSoldNowAfterFee = QString().setNum( ifSoldNow.toDouble() - sellFee.toDouble() );
-        //say("# Est: "+ ifSoldNowAfterFee,coin);
-        QString profitUSD = QString().setNum( ifSoldNowAfterFee.toDouble() - forSaleBoughtForPrices.at(z).toDouble() );
-        if ( forSaleBoughtForPrices.at(z).toDouble() >= ifSoldNowAfterFee.toDouble() ) {
-            say("# Est Fee: " + sellFee,coin);
-            say("# NP :" + mParent->getHandler()->trimPriceStringDecimal(profitUSD) ,coin);
-        } else {
-            say("# Est Fee: " + sellFee,coin);
-            say("# Est Profit: $" + mParent->getHandler()->trimPriceStringDecimal(profitUSD) ,coin);
-            if ( profitUSD.toDouble() > 1.00) {
-                say("# SELLNOW id: "+forSale.at(z),coin);
-                mParent->sellAutoBuyId(forSale.at(z),coin,ifSoldNowAfterFee);
-            }
-        }
-    }
-    say("#################",coin);
-    say("",coin);
-}
+//        QString ifSoldNowAfterFee = QString().setNum( ifSoldNow.toDouble() - sellFee.toDouble() );
+//        //say("# Est: "+ ifSoldNowAfterFee,coin);
+//        QString profitUSD = QString().setNum( ifSoldNowAfterFee.toDouble() - forSaleBoughtForPrices.at(z).toDouble() );
+//        if ( forSaleBoughtForPrices.at(z).toDouble() >= ifSoldNowAfterFee.toDouble() ) {
+//            say("# Est Fee: " + sellFee,coin);
+//            say("# NP :" + mParent->getHandler()->trimPriceStringDecimal(profitUSD) ,coin);
+//        } else {
+//            say("# Est Fee: " + sellFee,coin);
+//            say("# Est Profit: $" + mParent->getHandler()->trimPriceStringDecimal(profitUSD) ,coin);
+//            if ( profitUSD.toDouble() > 1.00) {
+//                say("# SELLNOW id: "+forSale.at(z),coin);
+//                mParent->sellAutoBuyId(forSale.at(z),coin,ifSoldNowAfterFee);
+//            }
+//        }
+//    }
+//    say("#################",coin);
+//    say("",coin);
+//}
 
 QString cbAutoSpotTrader::findLowestPrice(QList<QString> hayStack) {
     QString lowest = hayStack.at(0);
