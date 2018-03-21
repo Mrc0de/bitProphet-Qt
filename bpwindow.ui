@@ -25,7 +25,7 @@
      <rect>
       <x>10</x>
       <y>60</y>
-      <width>1061</width>
+      <width>1161</width>
       <height>811</height>
      </rect>
     </property>
@@ -44,7 +44,7 @@
        <rect>
         <x>0</x>
         <y>10</y>
-        <width>1051</width>
+        <width>1151</width>
         <height>261</height>
        </rect>
       </property>
@@ -60,7 +60,7 @@
        <rect>
         <x>0</x>
         <y>280</y>
-        <width>1061</width>
+        <width>1151</width>
         <height>501</height>
        </rect>
       </property>
@@ -1604,10 +1604,10 @@
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>1080</x>
+      <x>1180</x>
       <y>79</y>
-      <width>241</width>
-      <height>251</height>
+      <width>141</width>
+      <height>391</height>
      </rect>
     </property>
     <property name="toolTip">
@@ -1626,8 +1626,8 @@
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>20</y>
-       <width>91</width>
+       <y>290</y>
+       <width>141</width>
        <height>91</height>
       </rect>
      </property>
@@ -1639,7 +1639,7 @@
        <rect>
         <x>10</x>
         <y>40</y>
-        <width>71</width>
+        <width>121</width>
         <height>21</height>
        </rect>
       </property>
@@ -1670,7 +1670,7 @@
        <rect>
         <x>10</x>
         <y>61</y>
-        <width>71</width>
+        <width>121</width>
         <height>20</height>
        </rect>
       </property>
@@ -1701,7 +1701,7 @@
        <rect>
         <x>10</x>
         <y>20</y>
-        <width>71</width>
+        <width>121</width>
         <height>21</height>
        </rect>
       </property>
@@ -1731,7 +1731,7 @@
     <widget class="QGroupBox" name="cbRequestStatsBox">
      <property name="geometry">
       <rect>
-       <x>100</x>
+       <x>0</x>
        <y>20</y>
        <width>141</width>
        <height>111</height>
@@ -1848,7 +1848,7 @@
     <widget class="QGroupBox" name="gdaxRequestStatsBox">
      <property name="geometry">
       <rect>
-       <x>100</x>
+       <x>0</x>
        <y>130</y>
        <width>141</width>
        <height>111</height>
@@ -1962,13 +1962,48 @@
       </property>
      </widget>
     </widget>
+    <widget class="QGroupBox" name="GDAXlivePricesBox_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>240</y>
+       <width>141</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>WebSocket State</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>20</y>
+        <width>111</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="text">
+       <string>NULL</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
    </widget>
    <widget class="QGroupBox" name="GDAXlivePricesBox">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>-1</y>
-      <width>421</width>
+      <width>491</width>
       <height>51</height>
      </rect>
     </property>
