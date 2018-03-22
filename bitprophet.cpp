@@ -4,7 +4,7 @@ bitProphet::bitProphet(QObject *parent) : QObject(parent),  mAutoRefreshAccount(
     mAutoCheckSpotPrices(false), mAutoSpot(NULL), mGdaxAutoTradeInstance(NULL), mAutoCheckSpotPricesInterval(20000),
     mAutoSpotTrade(0), mAutoSpotTradeInterval(300000),
     mAutoRefreshGdaxAccount(true), mAutoRefreshGdaxAccountInterval(245000), mDb(NULL), mApiHandler(NULL), mGDAXApiHandler(NULL),mAutoCheckGDAXPrices(true),
-    mAutoCheckGDAXPricesInterval(20000),  mAutoGDAXTrade(false), mAutoGDAXTradeInterval(60000) {
+    mAutoCheckGDAXPricesInterval(20000),  mAutoGDAXTrade(false), mAutoGDAXTradeInterval(30000) {
     //fix stupid order warning....
         mParent = reinterpret_cast<bpWindow*>(parent);
         mParent->getStatusOutput()->document()->setMaximumBlockCount(200);

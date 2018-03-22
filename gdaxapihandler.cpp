@@ -470,6 +470,7 @@ void gdaxApiHandler::fetchGdaxSellFillsForOrderIdProcessResponse(gdaxApiResponse
 //    say("Processing Response >>> " + type);
     QJsonObject obj = *resp->getResponseContent();
     bool isSettled = obj["settled"].toBool();
+    say("Sale Price: " + obj["price"].toString() + " - Size: " + obj["size"].toString());
     if ( isSettled ) {
         mParent->getDb()->updateRowById(tradeId,"gdaxAutoTraderHistory","status","SOLD");
         mParent->getDb()->updateRowById(tradeId,"gdaxAutoTraderHistory","type","SELL");
@@ -509,6 +510,7 @@ void gdaxApiHandler::fetchGdaxFillsForOrderIdProcessResponse(gdaxApiResponse *re
 //    say("Processing Response >>> " + type);
     QJsonObject obj = *resp->getResponseContent();
     bool isSettled = obj["settled"].toBool();
+    say("Price: " + obj["price"].toString());
     if ( isSettled ) {
         //If its not settled, ignore it (for now)
         // if it is settled, change it to a sell and post it for sellTarget
