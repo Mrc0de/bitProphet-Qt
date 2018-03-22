@@ -13,7 +13,7 @@ gdaxWalletTable::gdaxWalletTable(gdaxAccount *acc,gdaxApiHandler *parent) : QObj
 }
 
 gdaxWalletTable::~gdaxWalletTable() {
-    mParent->say("[gdaxWalletTable] gdaxWalletTable Destroyed." );
+    //mParent->say("[gdaxWalletTable] gdaxWalletTable Destroyed." );
     if (mTableWidget != NULL ) { delete mTableWidget; }
 }
 

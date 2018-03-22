@@ -21,7 +21,7 @@ gdaxWebSocketHandler::~gdaxWebSocketHandler() {
 ///////////
 // METHODS
 void gdaxWebSocketHandler::say(QString sayThis) {
-     mParent->mParent->mParent->getWebSocketLiveOutput()->append("WS: " + sayThis);
+     mParent->mParent->mParent->getWebSocketLiveOutput()->append(sayThis);
      mParent->mParent->mParent->getWebSocketLiveOutput()->verticalScrollBar()->setValue(mParent->mParent->mParent->getWebSocketLiveOutput()->verticalScrollBar()->maximum());
 }
 
