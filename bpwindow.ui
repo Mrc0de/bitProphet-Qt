@@ -65,7 +65,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="mBtcUsdTab">
        <attribute name="title">
@@ -160,7 +160,7 @@
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="mBtcUsdTab">
+      <widget class="QWidget" name="mBchUsdTab">
        <attribute name="title">
         <string>BCH-USD</string>
        </attribute>

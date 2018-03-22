@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql network charts
+QT       += core gui sql network charts websockets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -50,7 +50,8 @@ SOURCES += \
     gdaxapiresponse.cpp \
     gdaxwallet.cpp \
     gdaxwallettable.cpp \
-    gdaxautotrader.cpp
+    gdaxautotrader.cpp \
+    gdaxwebsockethandler.cpp
 
 HEADERS += \
         bpwindow.h \
@@ -78,7 +79,8 @@ HEADERS += \
     gdaxapiresponse.h \
     gdaxwallet.h \
     gdaxwallettable.h \
-    gdaxautotrader.h
+    gdaxautotrader.h \
+    gdaxwebsockethandler.h
 
 FORMS += \
         bpwindow.ui \

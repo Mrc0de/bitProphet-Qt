@@ -34,6 +34,7 @@ public:
     QTextEdit *getGdaxAutoTraderBTCLog();
     QTextEdit *getGdaxAutoTraderLTCLog();
     QTextEdit *getGdaxAutoTraderETHLog();
+    QTextEdit *getWebSocketLiveOutput();
     /////////////////////////////////////
     coinbaseAccountSetupWindow *getAccSetupWindow();
     QComboBox* getAccountsCombo();
@@ -106,6 +107,7 @@ public:
     QLabel *getGdaxStatResponsesLabel();
     QLabel *getGdaxStatProcessedLabel();
     QLabel *getGdaxStatDestroyedLabel();
+    QLabel *getWebSocketStateLabel();
     ////////////////////////////////////
     QLineEdit *getBuySpotAmount();
     QLineEdit *getSellSpotAmount();
@@ -124,6 +126,10 @@ public:
     QCheckBox *getAutoRefreshGdaxBalanceEnabledCheckBox();
     QCheckBox *getAutoRefreshCbBalanceEnabledCheckBox();
     QCheckBox *getGdaxAutoTradeEnabledCheckBox();
+    QCheckBox *getWebSocketSubBtcUsd();
+    QCheckBox *getWebSocketSubLtcUsd();
+    QCheckBox *getWebSocketSubEthUsd();
+    QCheckBox *getWebSocketSubBchUsd();
     /////////////////////////////////////////////
     // ComboBoxes
     QComboBox *getXferFromCbWalletComboBox();

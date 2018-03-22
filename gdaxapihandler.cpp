@@ -1,6 +1,6 @@
 #include "gdaxapihandler.h"
 
-gdaxApiHandler::gdaxApiHandler(bitProphet *parent) : QObject(parent), mAccount(NULL),mWalletTableWidget(NULL) {
+gdaxApiHandler::gdaxApiHandler(bitProphet *parent) : QObject(parent), mAccount(NULL),mWalletTableWidget(NULL), mWSHandler(NULL) {
     mPtrName = QString("0x%1").arg((quintptr)this, QT_POINTER_SIZE * 2, 16, QChar('0'));
     mParent=parent;
     mProductIds.append("BTC-USD");
@@ -40,10 +40,12 @@ gdaxApiHandler::gdaxApiHandler(bitProphet *parent) : QObject(parent), mAccount(N
             //fetch our coinbase accounts and load them into combo boxes for transfers
             listCoinbaseAccountsAvailableToGdax();
             //do 1 price check
+            mWSHandler = new gdaxWebSocketHandler(this);
+
             //If we use websocket... we dont use this
-            for(int c=0;c<mProductIds.count();c++){
-                fetchGdaxPrice(mProductIds.at(c));
-            }
+            //            for(int c=0;c<mProductIds.count();c++){
+            //                fetchGdaxPrice(mProductIds.at(c));
+            //            }
         } else {
             say("GDAX Api Handler Has No Default Account.");
             say("Use Setup Menu to add one.");
@@ -58,6 +60,7 @@ gdaxApiHandler::gdaxApiHandler(bitProphet *parent) : QObject(parent), mAccount(N
 
 gdaxApiHandler::~gdaxApiHandler() {
     if (mAccount != NULL) { delete mAccount; }
+    if (mWSHandler != NULL ) { delete mWSHandler; }
     say("GDAX Api Handler Fading...");
 }
 

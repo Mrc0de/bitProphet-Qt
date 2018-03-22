@@ -19,12 +19,14 @@
 #include <QPushButton>
 #include <QTimer>
 
+
 #include "bpwindow.h"
 #include "bitprophet.h"
 #include "gdaxaccount.h"
 #include "gdaxapirequest.h"
 #include "gdaxapiresponse.h"
 #include "gdaxwallettable.h"
+#include "gdaxwebsockethandler.h"
 
 class bpWindow;
 class bitProphet;
@@ -32,6 +34,7 @@ class gdaxAccount;
 class gdaxApiRequest;
 class gdaxApiResponse;
 class gdaxWalletTable;
+class gdaxWebSocketHandler;
 
 class gdaxApiHandler : public QObject {
     Q_OBJECT
@@ -70,6 +73,7 @@ private:
     void xferFromGdaxToCoinbaseProcessResponse(gdaxApiResponse *resp);
     gdaxWalletTable *mWalletTableWidget;
     void fetchGdaxPrice(QString prodId);
+    gdaxWebSocketHandler *mWSHandler;
 signals:
 
 public slots:    

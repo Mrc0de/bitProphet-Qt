@@ -30,6 +30,9 @@ QTextEdit * bpWindow::getStatusOutput() {
     return ui->mStatusOutput;
 }
 
+QTextEdit * bpWindow::getWebSocketLiveOutput() {
+    return ui->mWebSocketLiveOutput;
+}
 
 
 QTextEdit* bpWindow::getCoinbaseTabLog() { return ui->mCoinbaseTabLog; }
@@ -68,6 +71,10 @@ QWidget *bpWindow::getGdaxAccountsTab() {
 
 QLabel *bpWindow::getAccountsNativeBalanceTotalLabel() {
     return ui->mTotalNativeValue;
+}
+
+QLabel *bpWindow::getWebSocketStateLabel() {
+    return ui->mWebSocketStateLabel;
 }
 
 //QLabel *bpWindow::getBtcSpotPriceLabel() {
@@ -409,6 +416,23 @@ QCheckBox *bpWindow::getAutoRefreshCbBalanceEnabledCheckBox() {
 QCheckBox *bpWindow::getGdaxAutoTradeEnabledCheckBox() {
     return ui->mAutoGDAXTradeEnabledCheckBox;
 }
+
+QCheckBox *bpWindow::getWebSocketSubBtcUsd() {
+    return ui->mWebSocketSubBtcUsdCheckBox;
+}
+
+QCheckBox *bpWindow::getWebSocketSubLtcUsd() {
+    return ui->mWebSocketSubLtcUsdCheckBox;
+}
+
+QCheckBox *bpWindow::getWebSocketSubEthUsd() {
+    return ui->mWebSocketSubEthUsdCheckBox;
+}
+
+QCheckBox *bpWindow::getWebSocketSubBchUsd() {
+    return ui->mWebSocketSubBchUsdCheckBox;
+}
+
 
 //mAutoGDAXTradeEnabledCheckBox
 
