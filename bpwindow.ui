@@ -1625,6 +1625,35 @@
          <string>Run AutoBuy Logic NOW</string>
         </property>
        </widget>
+       <widget class="QLabel" name="label_58">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>80</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The Minimum amount of Coin 'X' we are allowed to buy.&lt;/p&gt;&lt;p&gt;This is usually set to the minimum order amount of the exchange itself.&lt;/p&gt;&lt;p&gt;Setting this lower than minOrder on the exchange will cause orders to fail.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>minBuyInterval</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="mAutoGdaxMinBuyInterval">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>80</y>
+          <width>61</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>180</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QGroupBox" name="mAutoGdaxOpParamsFrame_2">
        <property name="geometry">
@@ -2284,7 +2313,7 @@
      <rect>
       <x>0</x>
       <y>-1</y>
-      <width>491</width>
+      <width>681</width>
       <height>51</height>
      </rect>
     </property>
@@ -2526,6 +2555,84 @@
      </property>
      <property name="text">
       <string>BTC $</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_51">
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>20</y>
+       <width>31</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Bid $</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_56">
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>30</y>
+       <width>31</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Ask $</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="mGdaxBchPriceLabel">
+     <property name="geometry">
+      <rect>
+       <x>540</x>
+       <y>10</y>
+       <width>121</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="mGdaxBchBidLabel">
+     <property name="geometry">
+      <rect>
+       <x>540</x>
+       <y>20</y>
+       <width>121</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_57">
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>10</y>
+       <width>31</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>BCH $</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="mGdaxBchAskLabel">
+     <property name="geometry">
+      <rect>
+       <x>540</x>
+       <y>30</y>
+       <width>121</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>0</string>
      </property>
     </widget>
    </widget>

@@ -117,6 +117,7 @@ public:
     QLineEdit *getPlaceLimitSellPrice();
     QLineEdit *getAutoGdaxMinPercentProfit();
     QLineEdit *getAutoGdaxMaxUSDBuy();
+    QLineEdit *getAutoGdaxMinBuyInterval();
     QFrame *getCbBTCPricePlacer();
     QFrame *getCbLTCPricePlacer();
     QFrame *getCbETHPricePlacer();

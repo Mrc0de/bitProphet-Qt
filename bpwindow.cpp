@@ -359,6 +359,10 @@ QLineEdit* bpWindow::getAutoGdaxMaxUSDBuy() {
     return ui->mAutoGdaxMaxUSDBuy;
 }
 
+QLineEdit* bpWindow::getAutoGdaxMinBuyInterval() {
+    return ui->mAutoGdaxMinBuyInterval;
+}
+
 //getAutoGdaxMinPercentProfit
 QLineEdit* bpWindow::getAutoGdaxMinPercentProfit() {
     return ui->mMinProfitPercent;

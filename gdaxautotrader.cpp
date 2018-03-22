@@ -27,7 +27,7 @@ gdaxAutoTrader::gdaxAutoTrader(bitProphet *parent) : QObject(parent) {
     mLastSellPriceBTC = "0.00";mLastSellPriceLTC = "0.00";mLastSellPriceETH = "0.00";
     mLastBuyTimeBTC = "0";mLastBuyTimeLTC = "0";mLastBuyTimeETH = "0";
     mLastSellTimeBTC = "0";mLastSellTimeLTC = "0";mLastSellTimeETH = "0";
-    mLastBuyExpireAfter = 3600000;
+    mLastBuyExpireAfter = mParent->mParent->getAutoGdaxMinBuyInterval()->text().toDouble();
     mLastSellExpireAfter = 3600000*2;
     sayGdaxAutoTrader("gdaxAutoTrader Exists!");
 
@@ -216,6 +216,25 @@ void gdaxAutoTrader::autoTradeCheck() {
         sayGdaxAutoTrader("# Analyzing Price History",currCoin);
         sayGdaxAutoTrader("# Coin: " + currCoin,currCoin);
 
+        mLastBuyExpireAfter = mParent->mParent->getAutoGdaxMinBuyInterval()->text().toDouble();
+        if ( currCoin == "BTC" ) {
+            if ( QDateTime::currentMSecsSinceEpoch() < ( mLastBuyTimeBTC.toDouble() + (mLastBuyExpireAfter*1000) ) ) {
+                sayGdaxAutoTrader("# Buy Delay...",currCoin);
+                continue;
+            }
+        }
+        if ( currCoin == "LTC" ) {
+            if ( QDateTime::currentMSecsSinceEpoch() < ( mLastBuyTimeLTC.toDouble() + (mLastBuyExpireAfter*1000) ) ) {
+                sayGdaxAutoTrader("# Buy Delay...",currCoin);
+                continue;
+            }
+        }
+        if ( currCoin == "ETH" ) {
+            if ( QDateTime::currentMSecsSinceEpoch() < ( mLastBuyTimeETH.toDouble() + (mLastBuyExpireAfter*1000) ) ) {
+                sayGdaxAutoTrader("# Buy Delay...",currCoin);
+                continue;
+            }
+        }
         /* Theory (hi/low buffer creation)
          * # High: $50.30
          * # Low: $49.86
@@ -340,6 +359,9 @@ void gdaxAutoTrader::autoTradeCheck() {
                     double pct = (mMinPercentProfit * 100.0);
                     mParent->getDb()->insertGdaxAutoTrade(currCoin,"BUY","placed",QString().setNum(totalBuyAmount),curBid,QString().setNum(totalBuyCost),QString().setNum(sellTarget),QString().setNum(sellTotal),QString().setNum(pct),QString().setNum(profNeeded));
                     lastId = mParent->getDb()->getLastIdForTable("gdaxAutoTraderHistory");
+                    if ( currCoin == "BTC" ) { mLastBuyTimeBTC = QString().setNum(QDateTime::currentMSecsSinceEpoch()); }
+                    if ( currCoin == "LTC" ) { mLastBuyTimeLTC = QString().setNum(QDateTime::currentMSecsSinceEpoch()); }
+                    if ( currCoin == "ETH" ) { mLastBuyTimeETH = QString().setNum(QDateTime::currentMSecsSinceEpoch()); }
                     sayGdaxAutoTrader("TradeId: " + QString().setNum(lastId),currCoin);
                     //PLACE Buy @ curBID (no fee)
 //                    if ( currCoin == "BTC") { mLastBuyPriceBTC = curBid.toDouble(); }
