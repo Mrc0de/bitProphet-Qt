@@ -470,7 +470,7 @@ void gdaxApiHandler::fetchGdaxSellFillsForOrderIdProcessResponse(gdaxApiResponse
 //    say("Processing Response >>> " + type);
     QJsonObject obj = *resp->getResponseContent();
     bool isSettled = obj["settled"].toBool();
-    say("Sale Price: " + obj["price"].toString() + " - Size: " + obj["size"].toString());
+    say("Sale Price: " + obj["price"].toString() + " - Size: " + obj["size"].toString() + " [" + obj["created_at"].toString() + "]");
     if ( isSettled ) {
         mParent->getDb()->updateRowById(tradeId,"gdaxAutoTraderHistory","status","SOLD");
         mParent->getDb()->updateRowById(tradeId,"gdaxAutoTraderHistory","type","SELL");

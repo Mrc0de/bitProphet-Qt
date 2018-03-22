@@ -14,7 +14,7 @@ gdaxWebSocketHandler::gdaxWebSocketHandler(gdaxApiHandler *parent) : QObject(par
 }
 
 gdaxWebSocketHandler::~gdaxWebSocketHandler() {
-    if ( mWS != NULL ) { delete mWS; }
+    if ( mWS != NULL ) { QObject::disconnect(mWS,&QWebSocket::disconnected, this, &gdaxWebSocketHandler::onDisconnected); mWS->close(); mWS->deleteLater();}
     say("Websocket Shutting Down...");
 }
 
@@ -89,6 +89,15 @@ void gdaxWebSocketHandler::onDisconnected() {
     say("WebSocket: DISCONNECTED!");
     mParent->mParent->mParent->getWebSocketStateLabel()->setText("DEAD");
     mParent->mParent->mParent->getWebSocketStateLabel()->setStyleSheet("QLabel { background-color : red; color : white; }");
+    //Reconnect
+    say("Reconnecting: " + mWSHost.toString());
+    if ( mWS != NULL ) { delete mWS; }
+    mWS = new QWebSocket();
+    QObject::connect(mWS, &QWebSocket::connected, this, &gdaxWebSocketHandler::onConnected);
+    mWS->open(QUrl(mWSHost));
+    if ( mWS->errorString() != "Unknown error") {
+        say("ERROR: " + mWS->errorString());
+    }
 }
 
 void gdaxWebSocketHandler::onTextMessageReceived(QString message) {
