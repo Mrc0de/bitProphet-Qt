@@ -50,6 +50,7 @@ void gdaxWebSocketHandler::parseTicker(QJsonObject ticker) {
     tBid = trimDollarStringCents(ticker["best_bid"].toString());
     tPrice = trimDollarStringCents(ticker["price"].toString());
     tAsk = trimDollarStringCents(ticker["best_ask"].toString());
+    mParent->mParent->getDb()->addToGdaxPriceHistory(tProdId.mid(0,tProdId.indexOf('-')),tPrice,tAsk,tBid);
     if ( tProdId == "BTC-USD" ) {
         mParent->mParent->mParent->getGdaxBtcAskLabel()->setText(tAsk);
         mParent->mParent->mParent->getGdaxBtcBidLabel()->setText(tBid);
