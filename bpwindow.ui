@@ -30,7 +30,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="mStatusTab">
      <attribute name="title">
@@ -1581,6 +1581,48 @@
         </property>
         <property name="text">
          <string>minUSDBuy</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="mAutoGdaxMaxUSDBuy">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>60</y>
+          <width>61</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>25</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_55">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;The Minimum amount of Coin 'X' we are allowed to buy.&lt;/p&gt;&lt;p&gt;This is usually set to the minimum order amount of the exchange itself.&lt;/p&gt;&lt;p&gt;Setting this lower than minOrder on the exchange will cause orders to fail.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>maxUSDBuy</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>150</y>
+          <width>141</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Run AutoBuy Logic NOW</string>
         </property>
        </widget>
       </widget>

@@ -116,6 +116,7 @@ public:
     QLineEdit *getPlaceLimitSellAmount();
     QLineEdit *getPlaceLimitSellPrice();
     QLineEdit *getAutoGdaxMinPercentProfit();
+    QLineEdit *getAutoGdaxMaxUSDBuy();
     QFrame *getCbBTCPricePlacer();
     QFrame *getCbLTCPricePlacer();
     QFrame *getCbETHPricePlacer();
@@ -158,6 +159,7 @@ private slots:
     void on_mPlaceGdaxLimitSell_released();
     void on_mCancelAllGdaxOrders_released();
     void on_mAutoGDAXTradeEnabledCheckBox_toggled(bool checked);
+    void on_pushButton_released();
 };
 
 #endif // BPWINDOW_H

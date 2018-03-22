@@ -22,6 +22,7 @@ public:
     QList<QString> mBuyTypes; //actively buy these coins
     QString mUSDStartAmount;
     double mMinUSDBuyAmount;
+    double mMaxUSDBuyAmount;
     double mMinPercentProfit; //DECIMAL VERSION -> 1% = 0.01
     QString mLastBuyPriceBTC;
     QString mLastBuyPriceLTC;
@@ -39,9 +40,10 @@ public:
     double mLastSellExpireAfter;
     double mLastBuyExpireAfter;
 private:
-    bitProphet *mParent;
-private slots:
+    bitProphet *mParent;    
+public slots:
     void autoTradeCheck();
+private slots:    
     void checkForBuyFills();
     void checkForSellFills();
 };

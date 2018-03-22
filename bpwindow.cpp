@@ -355,6 +355,10 @@ QLineEdit* bpWindow::getAutoGdaxMinUSDBuy() {
     return ui->mAutoGdaxMinUSDBuy;
 }
 
+QLineEdit* bpWindow::getAutoGdaxMaxUSDBuy() {
+    return ui->mAutoGdaxMaxUSDBuy;
+}
+
 //getAutoGdaxMinPercentProfit
 QLineEdit* bpWindow::getAutoGdaxMinPercentProfit() {
     return ui->mMinProfitPercent;
@@ -515,4 +519,8 @@ void bpWindow::on_mAutoGDAXTradeEnabledCheckBox_toggled(bool checked) {
     } else {
         mProphet->disableGDAXTrader();
     }
+}
+
+void bpWindow::on_pushButton_released() {
+    mProphet->mGdaxAutoTradeInstance->autoTradeCheck();
 }
