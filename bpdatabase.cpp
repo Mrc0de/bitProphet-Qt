@@ -202,6 +202,45 @@ void bpDatabase::getGdaxPriceHistoryLast(QString coin,int maxResults, QList<QStr
     QSqlDatabase::removeDatabase("qt_sql_default_connection");
 }
 
+void bpDatabase::getGdaxPriceHistoryFrom(QString coin,QString dateTimeFrom, int maxResults, QList<QString> *priceList,QList<QString> *askList,QList<QString> *bidList,QList<QString> *tsList) {
+    // select ts from gdaxPriceHistory where ts > "2018-03-22 00:00:00" limit 3;
+    //2018-03-22 02:26:57
+    //2018-03-22 02:26:57
+    //2018-03-22 02:26:57
+    {
+        QSqlDatabase Db = QSqlDatabase::addDatabase("QSQLITE");
+        Db.setDatabaseName("bitProphet.dat");
+        if (!Db.open()) {
+           say("Error: connecting to database failed!");
+        } else {
+           //say("Database: connection ok.");
+            QSqlQuery query;
+            query.prepare("select * from gdaxPriceHistory WHERE coin='"+ coin +"' AND id in (select * from gdaxPriceHistory WHERE coin='"+ coin +"' AND ts >= '"+dateTimeFrom+"' ORDER BY ts DESC LIMIT "+QString().setNum(maxResults)+") ORDER BY ts ASC "); //First(Past) to Last(current)
+            if (query.exec()) {
+                int y=0;
+               while (query.next()) {
+                  int pVal = query.record().indexOf("price");
+                  priceList->append(query.value(pVal).toString());
+                  int aVal = query.record().indexOf("ask");
+                  askList->append(query.value(aVal).toString());
+                  int bVal = query.record().indexOf("bid");
+                  bidList->append(query.value(bVal).toString());
+                  int tVal = query.record().indexOf("ts");
+                  tsList->append(query.value(tVal).toString());
+                  y++;
+               }
+            } else {
+                say("No Coin Prices In History For "+coin);
+            }
+        }
+        Db.close();
+    } //Db is gone
+    QSqlDatabase::removeDatabase("bitProphet.dat");
+    QSqlDatabase::removeDatabase("qt_sql_default_connection");
+
+}
+
+
 void bpDatabase::getBtcSpotPriceHistoryLast(int howManyMax,bpSplineChart *chart) {
     {
         QSqlDatabase Db = QSqlDatabase::addDatabase("QSQLITE");

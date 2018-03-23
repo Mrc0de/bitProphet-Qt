@@ -63,6 +63,7 @@ public:
     void getEthSpotPriceHistoryLast(int howManyMax,bpSplineChart *chart);
     void getSpotPriceHistoryLast(QString coin,int maxResults, QList<QString> *priceList);
     void getGdaxPriceHistoryLast(QString coin,int maxResults, QList<QString> *priceList,QList<QString> *askList,QList<QString> *bidList);
+    void getGdaxPriceHistoryFrom(QString coin,QString dateTimeFrom, int maxResults, QList<QString> *priceList,QList<QString> *askList,QList<QString> *bidList,QList<QString> *tsList);
     void getAutoSpotBuysForSaleList(QList<QString> *idList,QList<QString> *boughtAtList,QList<QString> *coinAmountList,QString coin);
 private:
     void say(QString sayThis);

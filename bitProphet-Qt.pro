@@ -52,7 +52,8 @@ SOURCES += \
     gdaxwallettable.cpp \
     gdaxautotrader.cpp \
     gdaxwebsockethandler.cpp \
-    timetool.cpp
+    timetool.cpp \
+    bppricegraph.cpp
 
 HEADERS += \
         bpwindow.h \
@@ -82,7 +83,8 @@ HEADERS += \
     gdaxwallettable.h \
     gdaxautotrader.h \
     gdaxwebsockethandler.h \
-    timetool.h
+    timetool.h \
+    bppricegraph.h
 
 FORMS += \
         bpwindow.ui \

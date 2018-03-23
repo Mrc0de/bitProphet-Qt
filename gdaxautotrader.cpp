@@ -369,7 +369,8 @@ void gdaxAutoTrader::autoTradeCheck() {
 //                    if ( currCoin == "ETH") { mLastBuyPriceETH = curBid.toDouble(); }
                     mParent->getGdaxHandler()->placeGdaxAutoTraderLimitBuy(currCoin+"-USD",QString().setNum(totalBuyAmount),curBid,lastId);
                     //Since we just made a buy, lets update our wallets too
-                    mParent->getGdaxHandler()->listGdaxAccountsSlot();
+                    // NO WE DONT ANYMORE // NO -> //mParent->getGdaxHandler()->listGdaxAccountsSlot();
+                    // ^That responses processor started NEW timers! Per BUY!! STUPID!
                     //Update USDBalance ( -howMuchToSpend )
                     USDBalance = QString().setNum(USDBalance.toDouble() - totalBuyCost);
             sayGdaxAutoTrader("# Buy on " + currCoin,currCoin);

@@ -59,6 +59,9 @@ bitProphet::bitProphet(QObject *parent) : QObject(parent),  mAutoRefreshAccount(
         setProphetState("IDLE");
         // Start bitProphet based on saved settings (or defaults)        
 
+        //Load Main Window Charts
+            //There might be better places to do this.
+
 }
 
 bitProphet::~bitProphet() {
