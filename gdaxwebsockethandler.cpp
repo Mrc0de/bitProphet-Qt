@@ -91,7 +91,7 @@ void gdaxWebSocketHandler::onDisconnected() {
     mParent->mParent->mParent->getWebSocketStateLabel()->setStyleSheet("QLabel { background-color : red; color : white; }");
     //Reconnect
     say("Reconnecting: " + mWSHost.toString());
-    if ( mWS != NULL ) { delete mWS; }
+    if ( mWS != NULL ) { QObject::disconnect(mWS,&QWebSocket::disconnected, this, &gdaxWebSocketHandler::onDisconnected); delete mWS; }
     mWS = new QWebSocket();
     QObject::connect(mWS, &QWebSocket::connected, this, &gdaxWebSocketHandler::onConnected);
     mWS->open(QUrl(mWSHost));
