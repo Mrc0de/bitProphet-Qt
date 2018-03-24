@@ -111,6 +111,7 @@ void resetLastSellPriceBtc();
 void resetLastSellPriceLtc();
 void resetLastSellPriceEth();
 void reloadPriceGraph();
+
 };
 
 #endif // BITPROPHET_H

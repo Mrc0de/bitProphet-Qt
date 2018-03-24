@@ -406,6 +406,7 @@ void bitProphet::reloadPriceGraph() {
             mBchPriceGraph->reloadPrices(pList,tList,0);
         }
     }
+    QTimer::singleShot(30000,this,SLOT(reloadPriceGraph()));
 }
 
 void bitProphet::disableAutoSpotTrader() {
