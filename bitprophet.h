@@ -99,6 +99,7 @@ public:
     bpPriceGraph *mEthPriceGraph;
     bpPriceGraph *mBchPriceGraph;
     timeTool *mTimeTool;
+    QList<QString> mPriceCoins;
 private:
 
 
@@ -109,7 +110,7 @@ void listAccountSlot();
 void resetLastSellPriceBtc();
 void resetLastSellPriceLtc();
 void resetLastSellPriceEth();
-void reloadPriceGraph(QList<QString> coins);
+void reloadPriceGraph();
 };
 
 #endif // BITPROPHET_H

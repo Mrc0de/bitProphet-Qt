@@ -89,10 +89,9 @@ bitProphet::bitProphet(QObject *parent) : QObject(parent),  mAutoRefreshAccount(
         mDb->getGdaxPriceHistoryFrom("BCH",curTime,2,&pList4,&aList4,&bList4,&tList4);
         mBchPriceGraph->loadPrices(pList4,tList4);
 
-        QList<QString> cList;
-        cList.append("BTC");cList.append("LTC");
-        cList.append("ETH");cList.append("BCH");
-        QTimer::singleShot(30000,this,SLOT(reloadPriceGraph(cList)));
+        mPriceCoins.append("BTC");mPriceCoins.append("LTC");
+        mPriceCoins.append("ETH");mPriceCoins.append("BCH");
+        QTimer::singleShot(30000,this,SLOT(reloadPriceGraph()));
 }
 
 bitProphet::~bitProphet() {
@@ -382,7 +381,8 @@ void bitProphet::cancelAllGdaxOrders() {
 // Slots
 /////////
 
-void bitProphet::reloadPriceGraph(QList<QString> coins) {
+void bitProphet::reloadPriceGraph() {
+    QList<QString> coins = mPriceCoins;
     for(int a=0;a<coins.count();a++) {
         if ( coins.at(a) == "BTC" ) {
             QString curTime = mTimeTool->getCurrentDateTimeForSql();
