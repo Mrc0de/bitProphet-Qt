@@ -96,6 +96,7 @@ public:
     gdaxAutoTrader *mGdaxAutoTradeInstance;
     bpPriceGraph *mBtcPriceGraph;
     bpPriceGraph *mLtcPriceGraph;
+    bpPriceGraph *mEthPriceGraph;
     bpPriceGraph *mBchPriceGraph;
     timeTool *mTimeTool;
 private:
@@ -108,6 +109,7 @@ void listAccountSlot();
 void resetLastSellPriceBtc();
 void resetLastSellPriceLtc();
 void resetLastSellPriceEth();
+void reloadPriceGraph(QList<QString> coins);
 };
 
 #endif // BITPROPHET_H

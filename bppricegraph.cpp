@@ -53,4 +53,10 @@ void bpPriceGraph::loadPrices(QList<QString> newSeries,QList<QString> timeSeries
     mChartView->show();
 }
 
-
+void bpPriceGraph::reloadPrices(QList<QString> newSeries,QList<QString> timeSeries,int seriesIndex) {
+    mLineSeriesList->at(seriesIndex)->clear();
+    for(int z=0;z<newSeries.count();z++){
+        mLineSeriesList->at(seriesIndex)->append(mTimeTool->getHourFromSqlTimeStamp(timeSeries.at(z)).toDouble(),newSeries.at(z).toDouble());
+        //say("Plotting y:" + newSeries.at(z) + " x:" + mParent->mTimeTool->getHourFromSqlTimeStamp(timeSeries.at(z)));
+    }
+}

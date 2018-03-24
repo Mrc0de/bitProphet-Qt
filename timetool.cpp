@@ -19,13 +19,13 @@ QString timeTool::getCurrentDateTimeForSql() {
 }
 
 QString timeTool::getHourFromSqlTimeStamp(QString sqlTimeStamp) {
-    std::cout<<sqlTimeStamp.toStdString()<<std::endl;
-    std::cout<<sqlTimeStamp.mid(sqlTimeStamp.indexOf(":")-2,2).toStdString()<<std::endl;
+    //std::cout<<sqlTimeStamp.toStdString()<<std::endl;
+    //std::cout<<sqlTimeStamp.mid(sqlTimeStamp.indexOf(":")-2,2).toStdString()<<std::endl;
     QString restVal;
     QString secVal;
     restVal = sqlTimeStamp.mid(sqlTimeStamp.indexOf(":")+1);
     secVal = restVal.mid(3,2);
     restVal = restVal.mid(0,2) +"."+secVal;
-    std::cout<<restVal.toStdString()<<std::endl;
+    //std::cout<<restVal.toStdString()<<std::endl;
     return QString(sqlTimeStamp.mid(sqlTimeStamp.indexOf(":")-2,2) + restVal);
 }

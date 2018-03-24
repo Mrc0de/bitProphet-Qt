@@ -19,6 +19,7 @@ public:
     explicit bpPriceGraph(bpWindow *parent,QString chartName,QWidget *WidgetParent);
     ~bpPriceGraph();    
     void loadPrices(QList<QString> newSeries,QList<QString> timeSeries);
+    void reloadPrices(QList<QString> newSeries,QList<QString> timeSeries,int seriesIndex);
 signals:
 
 public slots:
