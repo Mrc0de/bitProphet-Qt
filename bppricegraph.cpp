@@ -5,12 +5,14 @@
 // Desired output timeformats on graphs (and otherwise) ->> MM-DD-YYYY 00:00:00
 
 
-bpPriceGraph::bpPriceGraph(bitProphet *parent,QString chartName) : mLineSeriesList(NULL), mChart(NULL),mChartView(NULL) {
+bpPriceGraph::bpPriceGraph(bpWindow *parent,QString chartName,QWidget *WidgetParent) : mLineSeriesList(NULL), mChart(NULL),mChartView(NULL) {
     mParent = parent;
     mName = chartName;
     //Data Series LIST-OF
     mLineSeriesList = new QList<QSplineSeries*>();
     mLineSeriesList->append(new QSplineSeries());
+    mTimeTool = new timeTool(this);
+    mWidgetParent = WidgetParent;
     //chart, singular
 
     //cView, singular
@@ -26,12 +28,13 @@ bpPriceGraph::~bpPriceGraph() {
 }
 
 void bpPriceGraph::say(QString sayThis) {
-    mParent->say("|bpPriceGraph| "+ sayThis);
+    std::cout<<"|bpPriceGraph| "<<sayThis.toStdString()<<std::endl;
 }
 
 void bpPriceGraph::loadPrices(QList<QString> newSeries,QList<QString> timeSeries) {
+    say("Loading...");
     for(int z=0;z<newSeries.count();z++){
-        mLineSeriesList->at(mLineSeriesList->count()-1)->append(mParent->mTimeTool->getHourFromSqlTimeStamp(timeSeries.at(z)).toDouble(),newSeries.at(z).toDouble());
+        mLineSeriesList->at(mLineSeriesList->count()-1)->append(mTimeTool->getHourFromSqlTimeStamp(timeSeries.at(z)).toDouble(),newSeries.at(z).toDouble());
         //say("Plotting y:" + newSeries.at(z) + " x:" + mParent->mTimeTool->getHourFromSqlTimeStamp(timeSeries.at(z)));
     }
     mChart = new QChart();
@@ -39,10 +42,13 @@ void bpPriceGraph::loadPrices(QList<QString> newSeries,QList<QString> timeSeries
     mChart->addSeries(mLineSeriesList->at(mLineSeriesList->count()-1));
     mChart->createDefaultAxes();
     mChart->setTitle(mName);
-    mChart->axisX()->setRange(0000,2459.59);
-    mChartView = new QChartView(mChart);
+    //mChart->axisX()->setRange(0000,2459.59);
+
+    mChartView = new QChartView(mChart,mWidgetParent);
     mChartView->setRenderHint(QPainter::Antialiasing);
-    mChartView->setGeometry(QRect(0,0,600,400));
+    //mChartView->setGeometry(QRect(0,0,600,400));
+    //mChart->setGeometry(mParent->getBtcUsdPriceLabel()->geometry().x(),mParent->getBtcUsdPriceLabel()->geometry().y(),400,400);
+    mChartView->setGeometry(0,0,mWidgetParent->geometry().width(),500);
     say(mName + " Graph Loaded.");
     mChartView->show();
 }

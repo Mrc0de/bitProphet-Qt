@@ -200,6 +200,9 @@ QLabel *bpWindow::getGdaxEthBidLabel() {
 }
 
 
+QLabel *bpWindow::getBtcUsdPriceLabel() {
+    return ui->mBtcUsdPriceLabel;
+}
 
 QLineEdit *bpWindow::getBuySpotAmount() {
     return ui->mBuySpotAmount;
@@ -224,6 +227,22 @@ QLineEdit *bpWindow::getSellSpotAmount() {
 //QWidget *bpWindow::getChartsTab() {
 //    return ui->mChartsTab;
 //}
+
+QWidget *bpWindow::getBtcChartTab() {
+    return ui->mBtcUsdTab;
+}
+
+QWidget *bpWindow::getLtcChartTab() {
+    return ui->mLtcUsdTab;
+}
+
+QWidget *bpWindow::getEthChartTab() {
+    return ui->mEthUsdTab;
+}
+
+QWidget *bpWindow::getBchChartTab() {
+    return ui->mBchUsdTab;
+}
 
 QWidget *bpWindow::getTransactionTab() {
     return ui->mTransactionsTab;

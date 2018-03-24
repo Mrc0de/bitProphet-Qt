@@ -24,6 +24,7 @@ class bpWindow : public QMainWindow {
 public:
     explicit bpWindow(QWidget *parent = 0);
     ~bpWindow();
+    bitProphet *mProphet;
     ///////////////////////////////////
     // TextEdits
     QTextEdit *getStatusOutput();
@@ -108,6 +109,7 @@ public:
     QLabel *getGdaxStatProcessedLabel();
     QLabel *getGdaxStatDestroyedLabel();
     QLabel *getWebSocketStateLabel();
+    QLabel *getBtcUsdPriceLabel();
     ////////////////////////////////////
     QLineEdit *getBuySpotAmount();
     QLineEdit *getSellSpotAmount();
@@ -122,6 +124,10 @@ public:
     QFrame *getCbLTCPricePlacer();
     QFrame *getCbETHPricePlacer();
     QWidget *getChartsTab();
+    QWidget *getBtcChartTab();
+    QWidget *getLtcChartTab();
+    QWidget *getEthChartTab();
+    QWidget *getBchChartTab();
     ////////////////////////
     // Checkboxes
     QCheckBox *getAutoSpotTraderEnabledCheckBox();
@@ -146,7 +152,7 @@ public:
     ////////////////////////////////////
 private:
     Ui::bpWindow *ui;
-    bitProphet *mProphet;
+
     coinbaseAccountSetupWindow *mCbSetupWin;
     gdaxAccountSetupWindow *mGdaxSetupWin;
 private slots:
