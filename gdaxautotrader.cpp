@@ -154,6 +154,7 @@ void gdaxAutoTrader::autoTradeCheck() {
         QString curAsk("0.00");
         QString curBid("0.00");
         mParent->getDb()->getGdaxPriceHistoryLast(currCoin,180*hourRange,&lastPriceRange,&bidRange,&askRange);
+        //TODO: replace with getGdaxPriceHistoryFROM (coin, dateFrom, etc...
 
 
         //find highest, find lowest in range

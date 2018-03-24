@@ -14,6 +14,8 @@
 #include "cbautospottrader.h"
 #include "gdaxapihandler.h"
 #include "gdaxautotrader.h"
+#include "bppricegraph.h"
+#include "timetool.h"
 
 class bpWindow;
 class bpDatabase;
@@ -24,6 +26,8 @@ class bpSplineChart;
 class cbAutoSpotTrader;
 class gdaxApiHandler;
 class gdaxAutoTrader;
+class bpPriceGraph;
+class timeTool;
 
 class bitProphet : public QObject {
     Q_OBJECT    
@@ -90,6 +94,10 @@ private:
 public:
     cbAutoSpotTrader *mAutoSpot;
     gdaxAutoTrader *mGdaxAutoTradeInstance;
+    bpPriceGraph *mBtcPriceGraph;
+    bpPriceGraph *mLtcPriceGraph;
+    bpPriceGraph *mBchPriceGraph;
+    timeTool *mTimeTool;
 private:
 
 

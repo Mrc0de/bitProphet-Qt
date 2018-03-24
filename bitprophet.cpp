@@ -61,6 +61,12 @@ bitProphet::bitProphet(QObject *parent) : QObject(parent),  mAutoRefreshAccount(
 
         //Load Main Window Charts
             //There might be better places to do this.
+        mBtcPriceGraph = new bpPriceGraph(this,"LTC-USD");
+        mTimeTool = new timeTool(this);
+        QString curTime = mTimeTool->getCurrentDateTimeForSql();
+        QList<QString> pList;QList<QString> aList;QList<QString> bList;QList<QString> tList;
+        mDb->getGdaxPriceHistoryFrom("LTC",curTime,8,&pList,&aList,&bList,&tList);
+        mBtcPriceGraph->loadPrices(pList,tList);
 
 }
 

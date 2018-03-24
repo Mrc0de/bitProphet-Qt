@@ -202,7 +202,7 @@ void bpDatabase::getGdaxPriceHistoryLast(QString coin,int maxResults, QList<QStr
     QSqlDatabase::removeDatabase("qt_sql_default_connection");
 }
 
-void bpDatabase::getGdaxPriceHistoryFrom(QString coin,QString dateTimeFrom, int maxResults, QList<QString> *priceList,QList<QString> *askList,QList<QString> *bidList,QList<QString> *tsList) {
+void bpDatabase::getGdaxPriceHistoryFrom(QString coin,QString dateTimeFrom, int maxHours, QList<QString> *priceList,QList<QString> *askList,QList<QString> *bidList,QList<QString> *tsList) {
     // select ts from gdaxPriceHistory where ts > "2018-03-22 00:00:00" limit 3;
     //2018-03-22 02:26:57
     //2018-03-22 02:26:57
@@ -215,7 +215,9 @@ void bpDatabase::getGdaxPriceHistoryFrom(QString coin,QString dateTimeFrom, int 
         } else {
            //say("Database: connection ok.");
             QSqlQuery query;
-            query.prepare("select * from gdaxPriceHistory WHERE coin='"+ coin +"' AND id in (select * from gdaxPriceHistory WHERE coin='"+ coin +"' AND ts >= '"+dateTimeFrom+"' ORDER BY ts DESC LIMIT "+QString().setNum(maxResults)+") ORDER BY ts ASC "); //First(Past) to Last(current)
+            //QString sayMe("select * from gdaxPriceHistory WHERE coin='"+ coin +"' AND id in (select id from gdaxPriceHistory WHERE coin='"+ coin +"' AND ts >= date('"+dateTimeFrom+"','-"+QString().setNum(maxHours)+" hours') ORDER BY ts DESC) ORDER BY ts ASC ");
+            //say(sayMe);
+            query.prepare("select * from gdaxPriceHistory WHERE coin='"+ coin +"' AND id in (select id from gdaxPriceHistory WHERE coin='"+ coin +"' AND ts >= date('"+dateTimeFrom+"','-"+QString().setNum(maxHours)+" hours') ORDER BY ts DESC) ORDER BY ts ASC "); //First(Past) to Last(current)
             if (query.exec()) {
                 int y=0;
                while (query.next()) {
