@@ -48,7 +48,8 @@ void bpPriceGraph::loadPrices(QList<QString> newSeries,QList<QString> timeSeries
     mChartView->setRenderHint(QPainter::Antialiasing);
     //mChartView->setGeometry(QRect(0,0,600,400));
     //mChart->setGeometry(mParent->getBtcUsdPriceLabel()->geometry().x(),mParent->getBtcUsdPriceLabel()->geometry().y(),400,400);
-    mChartView->setGeometry(0,0,mWidgetParent->geometry().width(),500);
+
+    mChartView->setGeometry(0,16,mWidgetParent->geometry().width()*1.8,350);
     say(mName + " Graph Loaded.");
     mChartView->show();
 }
@@ -59,4 +60,7 @@ void bpPriceGraph::reloadPrices(QList<QString> newSeries,QList<QString> timeSeri
         mLineSeriesList->at(seriesIndex)->append(mTimeTool->getHourFromSqlTimeStamp(timeSeries.at(z)).toDouble(),newSeries.at(z).toDouble());
         //say("Plotting y:" + newSeries.at(z) + " x:" + mParent->mTimeTool->getHourFromSqlTimeStamp(timeSeries.at(z)));
     }
+    mChart->createDefaultAxes();
+    mChart->axisX()->setRange(mTimeTool->getHourFromSqlTimeStamp(timeSeries.at(0)).toDouble(),mTimeTool->getHourFromSqlTimeStamp(timeSeries.at(newSeries.count()-1)).toDouble());
+    mChartView->repaint();
 }

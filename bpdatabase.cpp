@@ -215,9 +215,9 @@ void bpDatabase::getGdaxPriceHistoryFrom(QString coin,QString dateTimeFrom, int 
         } else {
            //say("Database: connection ok.");
             QSqlQuery query;
-            QString sayMe("select * from gdaxPriceHistory WHERE coin='"+ coin +"' AND id in (select id from gdaxPriceHistory WHERE coin='"+ coin +"' AND ts >= datetime('"+dateTimeFrom+"','+"+QString().setNum(6-maxHours)+" hours') ORDER BY ts DESC) ORDER BY ts ASC ");
+            QString sayMe("select * from gdaxPriceHistory WHERE coin='"+ coin +"' AND id in (select id from gdaxPriceHistory WHERE coin='"+ coin +"' AND ts >= datetime('"+dateTimeFrom+"','-"+QString().setNum(maxHours)+" hours') ORDER BY ts DESC) ORDER BY ts ASC ");
             say(sayMe);
-            query.prepare("select * from gdaxPriceHistory WHERE coin='"+ coin +"' AND id in (select id from gdaxPriceHistory WHERE coin='"+ coin +"' AND ts >= datetime('"+dateTimeFrom+"','+"+QString().setNum(6-maxHours)+" hours') ORDER BY ts DESC) ORDER BY ts ASC "); //First(Past) to Last(current)
+            query.prepare("select * from gdaxPriceHistory WHERE coin='"+ coin +"' AND id in (select id from gdaxPriceHistory WHERE coin='"+ coin +"' AND ts >= datetime('"+dateTimeFrom+"','-"+QString().setNum(maxHours)+" hours') ORDER BY ts DESC) ORDER BY ts ASC "); //First(Past) to Last(current)
             if (query.exec()) {
                 int y=0;
                while (query.next()) {
@@ -1009,7 +1009,7 @@ void bpDatabase::addToGdaxPriceHistory( QString coin, QString price,QString ask,
         } else {
            //say("Database: connection ok.");
            QSqlQuery query;
-           query.prepare("INSERT INTO gdaxPriceHistory (coin, price,ask,bid) VALUES ('" + coin + "','" + price + "','" + ask + "','" + bid + "' )");
+           query.prepare("INSERT INTO gdaxPriceHistory (coin, price,ask,bid,ts) VALUES ('" + coin + "','" + price + "','" + ask + "','" + bid + "',datetime('now','localtime') )");
            if(query.exec()) {
               //say("addToCbSpotPriceHistory() Success");
            } else {
