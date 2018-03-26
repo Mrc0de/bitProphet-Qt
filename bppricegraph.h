@@ -24,6 +24,8 @@ signals:
 
 public slots:
 private:
+    QString lowestPrice(QList<QString> pList);
+    QString highestPrice(QList<QString> pList);
     bpWindow *mParent;
     QList<QSplineSeries*> *mLineSeriesList;
     QChart *mChart;

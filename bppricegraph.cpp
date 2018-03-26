@@ -60,7 +60,28 @@ void bpPriceGraph::reloadPrices(QList<QString> newSeries,QList<QString> timeSeri
         mLineSeriesList->at(seriesIndex)->append(mTimeTool->getHourFromSqlTimeStamp(timeSeries.at(z)).toDouble(),newSeries.at(z).toDouble());
         //say("Plotting y:" + newSeries.at(z) + " x:" + mParent->mTimeTool->getHourFromSqlTimeStamp(timeSeries.at(z)));
     }
-    mChart->createDefaultAxes();
     mChart->axisX()->setRange(mTimeTool->getHourFromSqlTimeStamp(timeSeries.at(0)).toDouble(),mTimeTool->getHourFromSqlTimeStamp(timeSeries.at(newSeries.count()-1)).toDouble());
+    mChart->axisY()->setRange(lowestPrice(newSeries).toDouble()-0.05,highestPrice(newSeries).toDouble()+0.05);
+    mChart->createDefaultAxes();
     mChartView->repaint();
+}
+
+QString bpPriceGraph::lowestPrice(QList<QString> pList) {
+    QString lowest = pList.at(0);
+    for(int c=0;c<pList.count();c++){
+        if ( pList.at(c).toDouble() < lowest.toDouble() ) {
+            lowest = pList.at(c);
+        }
+    }
+    return lowest;
+}
+
+QString bpPriceGraph::highestPrice(QList<QString> pList) {
+    QString highest = pList.at(0);
+    for(int c=0;c<pList.count();c++){
+        if ( pList.at(c).toDouble() > highest.toDouble() ) {
+            highest = pList.at(c);
+        }
+    }
+    return highest;
 }
