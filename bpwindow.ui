@@ -202,7 +202,7 @@
        </rect>
       </property>
       <property name="cursor" stdset="0">
-       <cursorShape>WaitCursor</cursorShape>
+       <cursorShape>ArrowCursor</cursorShape>
       </property>
       <property name="focusPolicy">
        <enum>Qt::StrongFocus</enum>

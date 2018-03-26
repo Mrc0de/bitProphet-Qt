@@ -11,6 +11,7 @@ gdaxWebSocketHandler::gdaxWebSocketHandler(gdaxApiHandler *parent) : QObject(par
     if ( mWS->errorString() != "Unknown error") {
         say("ERROR: " + mWS->errorString());
     }
+    mParent->mParent->mParent->getWebSocketLiveOutput()->document()->setMaximumBlockCount(256);
 }
 
 gdaxWebSocketHandler::~gdaxWebSocketHandler() {
