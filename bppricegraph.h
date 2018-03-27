@@ -29,6 +29,7 @@ private:
     bpWindow *mParent;
     QList<QSplineSeries*> *mLineSeriesList;
     QChart *mChart;
+    QDateTimeAxis *axisX;
     QChartView *mChartView;
     void say(QString sayThis);
     QString mName;
