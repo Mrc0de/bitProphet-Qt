@@ -47,8 +47,8 @@ void bpPriceGraph::loadPrices(QList<QString> newSeries,QList<QString> timeSeries
     mChart->removeAxis(mChart->axisX());
     mChart->setTitle(mName);
     QDateTimeAxis *axisX = new QDateTimeAxis;
-    axisX->setTickCount(10);
-    axisX->setFormat("hh:mm:ss");
+    axisX->setTickCount(20);
+    axisX->setFormat("hh:mm");
     mChart->addAxis(axisX, Qt::AlignBottom);
     mLineSeriesList->at(mLineSeriesList->count()-1)->attachAxis(axisX);
     //mChart->axisX()->setRange(0000,2459.59);
@@ -70,7 +70,7 @@ void bpPriceGraph::reloadPrices(QList<QString> newSeries,QList<QString> timeSeri
         mLineSeriesList->at(seriesIndex)->append(QDateTime().fromString(timeSeries.at(z),"yyyy-MM-dd hh:mm:ss").toMSecsSinceEpoch(),newSeries.at(z).toDouble());
         //say("Plotting y:" + newSeries.at(z) + " x:" + mParent->mTimeTool->getHourFromSqlTimeStamp(timeSeries.at(z)));
     }
-    //mChart->axisX()->setRange(mTimeTool->getHourFromSqlTimeStamp(timeSeries.at(0)).toDouble(),mTimeTool->getHourFromSqlTimeStamp(timeSeries.at(newSeries.count()-1)).toDouble());
+    mChart->axisX()->setRange(QDateTime().fromString(timeSeries.at(0),"yyyy-MM-dd hh:mm:ss").toMSecsSinceEpoch() , QDateTime().fromString(timeSeries.at(timeSeries.count()-1),"yyyy-MM-dd hh:mm:ss").toMSecsSinceEpoch() );
     mChart->axisY()->setRange(lowestPrice(newSeries).toDouble()-0.05,highestPrice(newSeries).toDouble()+0.05);
     //mChart->createDefaultAxes();
     mChartView->repaint();

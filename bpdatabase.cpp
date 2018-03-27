@@ -215,9 +215,9 @@ void bpDatabase::getGdaxPriceHistoryFrom(QString coin,QString dateTimeFrom, int 
         } else {
            //say("Database: connection ok.");
             QSqlQuery query;
-            QString sayMe("select * from gdaxPriceHistory WHERE coin='"+ coin +"' AND id in (select id from gdaxPriceHistory WHERE coin='"+ coin +"' AND ts >= datetime('"+dateTimeFrom+"','-"+QString().setNum(maxHours)+" hours') ORDER BY ts DESC LIMIT 200) ORDER BY ts ASC");
+            QString sayMe("select * from gdaxPriceHistory WHERE coin='"+ coin +"' AND id in (select id from gdaxPriceHistory WHERE coin='"+ coin +"' AND ts >= datetime('"+dateTimeFrom+"','-"+QString().setNum(maxHours)+" hours') ORDER BY ts DESC LIMIT 400) ORDER BY ts ASC");
             say(sayMe);
-            query.prepare("select * from gdaxPriceHistory WHERE coin='"+ coin +"' AND id in (select id from gdaxPriceHistory WHERE coin='"+ coin +"' AND ts >= datetime('"+dateTimeFrom+"','-"+QString().setNum(maxHours)+" hours') ORDER BY ts DESC LIMIT 200) ORDER BY ts ASC"); //First(Past) to Last(current)
+            query.prepare("select * from gdaxPriceHistory WHERE coin='"+ coin +"' AND id in (select id from gdaxPriceHistory WHERE coin='"+ coin +"' AND ts >= datetime('"+dateTimeFrom+"','-"+QString().setNum(maxHours)+" hours') ORDER BY ts DESC LIMIT 400) ORDER BY ts ASC"); //First(Past) to Last(current)
             if (query.exec()) {
                 int y=0;
                while (query.next()) {
