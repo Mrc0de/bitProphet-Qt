@@ -65,17 +65,19 @@ void bpPriceGraph::loadPrices(QList<QString> newSeries,QList<QString> timeSeries
 }
 
 void bpPriceGraph::reloadPrices(QList<QString> newSeries,QList<QString> timeSeries,int seriesIndex) {
-    mLineSeriesList->at(seriesIndex)->clear();
-    for(int z=0;z<newSeries.count();z++){
-        QDateTime dt = QDateTime::fromString(timeSeries.at(z),"yyyy-MM-dd hh:mm:ss");
-        mLineSeriesList->at(seriesIndex)->append(QDateTime().fromString(timeSeries.at(z),"yyyy-MM-dd hh:mm:ss").toMSecsSinceEpoch(),newSeries.at(z).toDouble());
-        //say("Plotting y:" + newSeries.at(z) + " x:" + mParent->mTimeTool->getHourFromSqlTimeStamp(timeSeries.at(z)));
+    if ( newSeries.count() > 0 ) {
+        mLineSeriesList->at(seriesIndex)->clear();
+        for(int z=0;z<newSeries.count();z++){
+            QDateTime dt = QDateTime::fromString(timeSeries.at(z),"yyyy-MM-dd hh:mm:ss");
+            mLineSeriesList->at(seriesIndex)->append(QDateTime().fromString(timeSeries.at(z),"yyyy-MM-dd hh:mm:ss").toMSecsSinceEpoch(),newSeries.at(z).toDouble());
+            //say("Plotting y:" + newSeries.at(z) + " x:" + mParent->mTimeTool->getHourFromSqlTimeStamp(timeSeries.at(z)));
+        }
+        axisX->setMin(QDateTime().fromString(timeSeries.at(0),"yyyy-MM-dd hh:mm:ss"));
+        axisX->setMax(QDateTime().fromString(timeSeries.at(timeSeries.count()-1),"yyyy-MM-dd hh:mm:ss"));
+        mChart->axisY()->setRange(lowestPrice(newSeries).toDouble()-0.05,highestPrice(newSeries).toDouble()+0.05);
+        //mChart->createDefaultAxes();
+        mChartView->repaint();
     }
-    axisX->setMin(QDateTime().fromString(timeSeries.at(0),"yyyy-MM-dd hh:mm:ss"));
-    axisX->setMax(QDateTime().fromString(timeSeries.at(timeSeries.count()-1),"yyyy-MM-dd hh:mm:ss"));
-    mChart->axisY()->setRange(lowestPrice(newSeries).toDouble()-0.05,highestPrice(newSeries).toDouble()+0.05);
-    //mChart->createDefaultAxes();
-    mChartView->repaint();
 }
 
 QString bpPriceGraph::lowestPrice(QList<QString> pList) {
