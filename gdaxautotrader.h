@@ -3,8 +3,10 @@
 
 #include <QObject>
 #include "bitprophet.h"
+#include "timetool.h"
 
 class bitProphet;
+class timeTool;
 
 class gdaxAutoTrader : public QObject {
     Q_OBJECT

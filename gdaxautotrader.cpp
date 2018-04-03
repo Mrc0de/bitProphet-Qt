@@ -153,7 +153,11 @@ void gdaxAutoTrader::autoTradeCheck() {
         QString curPrice("0.00");
         QString curAsk("0.00");
         QString curBid("0.00");
-        mParent->getDb()->getGdaxPriceHistoryLast(currCoin,180*hourRange,&lastPriceRange,&bidRange,&askRange);
+        //mParent->getDb()->getGdaxPriceHistoryLast(currCoin,180*hourRange,&lastPriceRange,&bidRange,&askRange);
+        timeTool *mTimeTool = new timeTool(this);
+        QString curTime = mTimeTool->getCurrentDateTimeForSql();
+        QList<QString> tsList; //extra, for this use case
+        mParent->getDb()->getGdaxPriceHistoryFrom(currCoin,curTime,2,&lastPriceRange,&bidRange,&askRange,&tsList);
         //TODO: replace with getGdaxPriceHistoryFROM (coin, dateFrom, etc...
 
 
