@@ -200,10 +200,10 @@ void gdaxAutoTrader::autoTradeCheck() {
             continue;
         }
         QString howMuchToSpend("0.00");
-        if ( USDBalance.toDouble() > mMaxUSDBuyAmount+1 && ((USDBalance.toDouble()) / curBid.toDouble()) > mMinCryptoBuyAmount )  {
+        if ( USDBalance.toDouble() > mMaxUSDBuyAmount && ((mMaxUSDBuyAmount) / curBid.toDouble()) > mMinCryptoBuyAmount )  {
             howMuchToSpend = QString().setNum(mMaxUSDBuyAmount);
         } else if ( USDBalance.toDouble() < mMaxUSDBuyAmount+1 && USDBalance.toDouble() > mMinUSDBuyAmount && ((USDBalance.toDouble()) / curBid.toDouble()) > mMinCryptoBuyAmount )  {
-            howMuchToSpend = QString().setNum(mMinUSDBuyAmount);
+            howMuchToSpend = USDBalance;
         } else {
             sayGdaxAutoTrader("# Available $USD too low For MinCryptoBuy(< "+QString().setNum(mMinCryptoBuyAmount)+")",currCoin);
             break;
