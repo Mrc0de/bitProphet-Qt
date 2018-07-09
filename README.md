@@ -1,6 +1,8 @@
 # bitProphet-Qt
 bitProphet-Qt primary purpose is prediction of BitCoin Prices in the near future</br>
-More Stuff at bottom of page but first PICTURES!</br>
+More Stuff at bottom of page but first PICTURES!</br></br>
+<img src="https://raw.githubusercontent.com/Mrc0de/bitProphet-Qt/master/bitProphet-NewGUI.png"></br>
+<h3> Older Screenshots</h3>
 <img src="https://raw.githubusercontent.com/Mrc0de/bitProphet-Qt/master/bitProphetGDAXtab.png"></br>
 </br>
 <img src="https://raw.githubusercontent.com/Mrc0de/bitProphet-Qt/master/bitProphet-Usage-Screen1.png"></br>
