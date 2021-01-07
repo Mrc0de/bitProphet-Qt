@@ -489,8 +489,10 @@ void gdaxApiHandler::fetchGdaxSellFillsForOrderIdProcessResponse(gdaxApiResponse
         mParent->getDb()->updateRowById(tradeId,"gdaxAutoTraderHistory","sellTotal",sellTotal);
         //find the profit and send it back to coinbase in USD
         QString buyTotal = mParent->getDb()->getGdaxAutoTradeHistoryValueById(tradeId,"buyTotal");
-        QString finalProfit = QString().setNum(sellTotal.toDouble() - buyTotal.toDouble());
-        say("# Gdax Auto Sell Final Profit -> $"+finalProfit );
+        double bFee = buyTotal.toDouble() * 0.005;
+        double sFee = sellTotal.toDouble() * 0.005;
+        QString finalProfit = QString().setNum((sellTotal.toDouble() - buyTotal.toDouble()) - (bFee+sFee) );
+        say("# Gdax Auto Sell Final Profit -> $"+finalProfit ); // adjusted for fees, correct.
         QComboBox *scanCurs = mParent->mParent->getXferToCbWalletComboBox();
         QString toAccId;
         for (int c=0;c<scanCurs->count();c++) {
@@ -558,8 +560,8 @@ void gdaxApiHandler::process404(gdaxApiResponse *resp) {
         if(obj["message"] == "NotFound") {
             //we checked on an order and got notfound, means we cancelled it.
             if ( tradeId.toInt() > 0 ) {
-                mParent->getDb()->updateRowById(tradeId,"gdaxAutoTraderHistory","status","CANCELLED");
-                say("# Sell Order Number " + tradeId + " was cancelled, updating orderDb (NotFound)");
+//                mParent->getDb()->updateRowById(tradeId,"gdaxAutoTraderHistory","status","CANCELLED");
+//                say("# Sell Order Number " + tradeId + " was cancelled, updating orderDb (NotFound)");
             }
         }
     } else if (type == "fetchGdaxFillsForOrderId") {
@@ -568,8 +570,8 @@ void gdaxApiHandler::process404(gdaxApiResponse *resp) {
         if(obj["message"] == "NotFound") {
             //we checked on an order and got notfound, means we cancelled it.
             if ( tradeId.toInt() > 0 ) {
-                mParent->getDb()->updateRowById(tradeId,"gdaxAutoTraderHistory","status","CANCELLED");
-                say("# Buy Order Number " + tradeId + " was cancelled, updating orderDb (NotFound)");
+//                mParent->getDb()->updateRowById(tradeId,"gdaxAutoTraderHistory","status","CANCELLED");
+//                say("# Buy Order Number " + tradeId + " was cancelled, updating orderDb (NotFound)");
             }
         }
     } else {

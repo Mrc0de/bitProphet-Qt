@@ -201,9 +201,9 @@ void gdaxAutoTrader::autoTradeCheck() {
         }
         QString howMuchToSpend("0.00");
         if ( USDBalance.toDouble() > mMaxUSDBuyAmount && ((mMaxUSDBuyAmount) / curBid.toDouble()) > mMinCryptoBuyAmount )  {
-            howMuchToSpend = QString().setNum(mMaxUSDBuyAmount);
+            howMuchToSpend = QString().setNum(mMaxUSDBuyAmount - (mMaxUSDBuyAmount * 0.005));
         } else if ( USDBalance.toDouble() < mMaxUSDBuyAmount && USDBalance.toDouble() >= mMinUSDBuyAmount && ((USDBalance.toDouble()) / curBid.toDouble()) > mMinCryptoBuyAmount )  {
-            howMuchToSpend = USDBalance;
+            howMuchToSpend = QString().setNum(USDBalance.toDouble() - (USDBalance.toDouble() * 0.005));
         } else {
             sayGdaxAutoTrader("# Available $USD too low For MinCryptoBuy(< "+QString().setNum(mMinCryptoBuyAmount)+")",currCoin);
             break;
@@ -343,13 +343,17 @@ void gdaxAutoTrader::autoTradeCheck() {
                     double totalBuyAmount = howMuchToSpend.toDouble() / curBid.toDouble();
                     if ( totalBuyAmount < mMinCryptoBuyAmount ) { sayGdaxAutoTrader("# Cannot Afford "+ QString().setNum(mMinCryptoBuyAmount) +" of "+ currCoin,currCoin); continue; }
                     double totalBuyCost = howMuchToSpend.toDouble();
+                    double buyFee = totalBuyCost * 0.005; // buy has a fee too now 0.5% up to 10k/mo
                     double profNeeded = mMinPercentProfit * totalBuyCost;
-                    double sellTotal = totalBuyCost + profNeeded;
+                    double sellTotal = totalBuyCost + profNeeded + (buyFee*2);
+                    double sellFee = sellTotal * 0.005; // Sale has a fee too now
                     sayGdaxAutoTrader("# IfBuy { " + QString().setNum(totalBuyAmount) + " }",currCoin);
                     sayGdaxAutoTrader("# AtPrice { " + curBid + " }",currCoin);
                     sayGdaxAutoTrader("# For { " + QString().setNum(totalBuyCost) + " }",currCoin);
+                    sayGdaxAutoTrader("# Buy Fee { $" + QString().setNum(buyFee) + " }",currCoin);
                     sayGdaxAutoTrader("# MinProfit { $" + QString().setNum(profNeeded) + " }",currCoin);
                     sayGdaxAutoTrader("# Sell Total { $" + QString().setNum(sellTotal) + " }",currCoin);
+                    sayGdaxAutoTrader("# Sell Fee { $" + QString().setNum(sellFee) + " }",currCoin);
                     double sellTarget = sellTotal / totalBuyAmount;
                     sayGdaxAutoTrader("# Sell Target { $" + QString().setNum(sellTarget) + " }",currCoin);
                     //has sell price been seen in range?
@@ -368,7 +372,7 @@ void gdaxAutoTrader::autoTradeCheck() {
                     if ( currCoin == "LTC" ) { mLastBuyTimeLTC = QString().setNum(QDateTime::currentMSecsSinceEpoch()); }
                     if ( currCoin == "ETH" ) { mLastBuyTimeETH = QString().setNum(QDateTime::currentMSecsSinceEpoch()); }
                     sayGdaxAutoTrader("TradeId: " + QString().setNum(lastId),currCoin);
-                    //PLACE Buy @ curBID (no fee)
+                    //PLACE Buy @ curBID (buy fee applies, 0.5% up to 10k/mo)
 //                    if ( currCoin == "BTC") { mLastBuyPriceBTC = curBid.toDouble(); }
 //                    if ( currCoin == "LTC") { mLastBuyPriceLTC = curBid.toDouble(); }
 //                    if ( currCoin == "ETH") { mLastBuyPriceETH = curBid.toDouble(); }
@@ -377,7 +381,7 @@ void gdaxAutoTrader::autoTradeCheck() {
                     // NO WE DONT ANYMORE // NO -> //mParent->getGdaxHandler()->listGdaxAccountsSlot();
                     // ^That responses processor started NEW timers! Per BUY!! STUPID!
                     //Update USDBalance ( -howMuchToSpend )
-                    USDBalance = QString().setNum(USDBalance.toDouble() - totalBuyCost);
+                    USDBalance = QString().setNum(USDBalance.toDouble() - totalBuyCost - buyFee);
             sayGdaxAutoTrader("# Buy on " + currCoin,currCoin);
         } else {
             sayGdaxAutoTrader("# Passing on " + currCoin,currCoin);

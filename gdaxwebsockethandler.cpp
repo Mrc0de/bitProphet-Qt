@@ -71,7 +71,7 @@ void gdaxWebSocketHandler::parseTicker(QJsonObject ticker) {
         //        mParent->mParent->mParent->getGdaxBchPriceLabel()->setText(tPrice);
     }
     if ( tLastSize.length() > 0 ) {
-        say(tProdId + " - $" + tPrice + " ~ $"+ tAsk +" | Vs | $" + tBid + " ~ [Size: "+ tLastSize +"] ");
+//        say(tProdId + " - $" + tPrice + " ~ $"+ tAsk +" | Vs | $" + tBid + " ~ [Size: "+ tLastSize +"] ");
     }
 }
 

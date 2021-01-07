@@ -61,12 +61,12 @@ bitProphet::bitProphet(QObject *parent) : QObject(parent),  mAutoRefreshAccount(
 
         //Load Main Window Charts
             //There might be better places to do this.
-        mBtcPriceGraph = new bpPriceGraph(this->mParent,"BTC-USD",this->mParent->getBtcChartTab());
+//        mBtcPriceGraph = new bpPriceGraph(this->mParent,"BTC-USD",this->mParent->getBtcChartTab());
         mTimeTool = new timeTool(this);
         QString curTime = mTimeTool->getCurrentDateTimeForSql();
-        QList<QString> pList;QList<QString> aList;QList<QString> bList;QList<QString> tList;
-        mDb->getGdaxPriceHistoryFrom("BTC",curTime,2,&pList,&aList,&bList,&tList);
-        mBtcPriceGraph->loadPrices(pList,tList);
+//        QList<QString> pList;QList<QString> aList;QList<QString> bList;QList<QString> tList;
+//        mDb->getGdaxPriceHistoryFrom("BTC",curTime,2,&pList,&aList,&bList,&tList);
+//        mBtcPriceGraph->loadPrices(pList,tList);
 
         // Now for LTC
         mLtcPriceGraph = new bpPriceGraph(this->mParent,"LTC-USD",this->mParent->getLtcChartTab());
@@ -74,20 +74,21 @@ bitProphet::bitProphet(QObject *parent) : QObject(parent),  mAutoRefreshAccount(
         mDb->getGdaxPriceHistoryFrom("LTC",curTime,2,&pList2,&aList2,&bList2,&tList2);
         mLtcPriceGraph->loadPrices(pList2,tList2);
 
-        // Now for Eth
-        mEthPriceGraph = new bpPriceGraph(this->mParent,"ETH-USD",this->mParent->getEthChartTab());
-        QList<QString> pList3;QList<QString> aList3;QList<QString> bList3;QList<QString> tList3;
-        mDb->getGdaxPriceHistoryFrom("ETH",curTime,2,&pList3,&aList3,&bList3,&tList3);
-        mEthPriceGraph->loadPrices(pList3,tList3);
+//        // Now for Eth
+//        mEthPriceGraph = new bpPriceGraph(this->mParent,"ETH-USD",this->mParent->getEthChartTab());
+//        QList<QString> pList3;QList<QString> aList3;QList<QString> bList3;QList<QString> tList3;
+//        mDb->getGdaxPriceHistoryFrom("ETH",curTime,2,&pList3,&aList3,&bList3,&tList3);
+//        mEthPriceGraph->loadPrices(pList3,tList3);
 
-        // Now for BCH
-        mBchPriceGraph = new bpPriceGraph(this->mParent,"BCH-USD",this->mParent->getBchChartTab());
-        QList<QString> pList4;QList<QString> aList4;QList<QString> bList4;QList<QString> tList4;
-        mDb->getGdaxPriceHistoryFrom("BCH",curTime,2,&pList4,&aList4,&bList4,&tList4);
-        mBchPriceGraph->loadPrices(pList4,tList4);
+//        // Now for BCH
+//        mBchPriceGraph = new bpPriceGraph(this->mParent,"BCH-USD",this->mParent->getBchChartTab());
+//        QList<QString> pList4;QList<QString> aList4;QList<QString> bList4;QList<QString> tList4;
+//        mDb->getGdaxPriceHistoryFrom("BCH",curTime,2,&pList4,&aList4,&bList4,&tList4);
+//        mBchPriceGraph->loadPrices(pList4,tList4);
 
-        mPriceCoins.append("BTC");mPriceCoins.append("LTC");
-        mPriceCoins.append("ETH");mPriceCoins.append("BCH");
+//        mPriceCoins.append("BTC");
+        mPriceCoins.append("LTC");
+//        mPriceCoins.append("ETH");mPriceCoins.append("BCH");
         QTimer::singleShot(30000,this,SLOT(reloadPriceGraph()));
 }
 

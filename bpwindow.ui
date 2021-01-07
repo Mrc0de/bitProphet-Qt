@@ -2221,7 +2221,7 @@
        <string>BTC-USD</string>
       </property>
       <property name="checked">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QCheckBox" name="mWebSocketSubEthUsdCheckBox">
@@ -2237,7 +2237,7 @@
        <string>ETH-USD</string>
       </property>
       <property name="checked">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QCheckBox" name="mWebSocketSubLtcUsdCheckBox">
@@ -2269,7 +2269,7 @@
        <string>BCH-USD</string>
       </property>
       <property name="checked">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QLabel" name="mWSSubsLabelText">
