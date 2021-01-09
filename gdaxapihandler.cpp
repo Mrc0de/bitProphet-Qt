@@ -491,7 +491,8 @@ void gdaxApiHandler::fetchGdaxSellFillsForOrderIdProcessResponse(gdaxApiResponse
         QString buyTotal = mParent->getDb()->getGdaxAutoTradeHistoryValueById(tradeId,"buyTotal");
         double bFee = buyTotal.toDouble() * 0.005;
         double sFee = sellTotal.toDouble() * 0.005;
-        QString finalProfit = QString().setNum((sellTotal.toDouble() - buyTotal.toDouble()) - (bFee+sFee) );
+        QString finalProfit = QString().setNum(abs(sellTotal.toDouble() - buyTotal.toDouble()) - (bFee+sFee) );
+        finalProfit = finalProfit.mid(0,finalProfit.indexOf('.')+3);
         say("# Gdax Auto Sell Final Profit -> $"+finalProfit ); // adjusted for fees, correct.
         QComboBox *scanCurs = mParent->mParent->getXferToCbWalletComboBox();
         QString toAccId;
